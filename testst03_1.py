@@ -41,7 +41,7 @@ def page1():
         
         st.selectbox("あなたの好きなジャンルは？", WJList, key="lwj")
 
-        if st.button(st.session_state["lwj"]):
+        if st.form_submit_button(st.session_state["lwj"]):
             st.wrte(f'{st.session_state["lwj"]}は')
             st.wrte("--------ここにジャンルの説明--------")
         
