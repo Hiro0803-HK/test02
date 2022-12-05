@@ -40,6 +40,10 @@ def page1():
         st.radio("あなたの髪型は？", HSList, key="yhs")
         
         st.selectbox("あなたの好きなジャンルは？", WJList, key="lwj")
+
+        if st.button(st.session_state["lwj"]):
+            st.wrte(f'{st.session_state["lwj"]}は')
+            st.wrte("--------ここにジャンルの説明--------")
         
         st.form_submit_button(label = "決定", on_click = change_page) 
     
