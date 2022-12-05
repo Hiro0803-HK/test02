@@ -34,20 +34,24 @@ def page1():
        with st.form(key="my_form01"):
     
         st.radio("あなたの体型は", YBCList, key="ybc")
+
+        st.write(st.session_state["ybc"])
         
         st.radio("あなたの身長は？", TList, key="ytl")
         
         st.radio("あなたの髪型は？", HSList, key="yhs")
         
         st.selectbox("あなたの好きなジャンルは？", WJList, key="lwj")
-
-        if st.form_submit_button(st.session_state["lwj"]):
-            st.wrte(f'{st.session_state["lwj"]}は')
-            st.wrte("--------ここにジャンルの説明--------")
+            
+        if st.form_submit_button("ジャンルの説明の表示/更新"):
+            def JInfo():
+                    with st.expander(f'**{st.session_state["lwj"]}**とは？'):
+                        st.markdown(f'**{st.session_state["lwj"]}**というジャンルは')
+                        st.markdown("--------ここにジャンルの説明--------")
         
-        st.form_submit_button(label = "決定", on_click = change_page) 
-    
-    
+            JInfo()
+        st.form_submit_button(label = "決定", on_click = change_page)
+
 def page2():
         
         def change_page():
