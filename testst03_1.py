@@ -9,6 +9,7 @@ import streamlit as st
 #import pandas as pd
 from PIL import Image
 import time
+inport time
 
 st.title('グループ制作サンプル')
 
