@@ -5,10 +5,10 @@ Created on Sat Dec  3 14:51:05 2022
 @author: 0H06015 小木曽　弘朗
 """
 import streamlit as st
-import numpy as np
-import pandas as pd
+#import numpy as np
+#import pandas as pd
 from PIL import Image
-import time
+
 
 st.title('グループ制作サンプル')
 
@@ -24,6 +24,22 @@ TList = ["やや低め", "平均程度", "高め"]
 HSList = ["短め", "普通", "長め"]
 
 WJList = ["きれい目", "アメカジ", "ストリート", "トラッド", "ワーク", "サーフ"]
+
+st.markdown(
+"""
+<style>
+div[data-baseweb = "popover"] ul {
+    background-color:#7086ba;
+}
+div.st-bh{
+    background-color:#239ba6;
+}
+div.st-b8{
+    background-color:blue
+}
+
+</style>
+""", unsafe_allow_html=True)
 
 def page1():
     
@@ -47,7 +63,7 @@ def page1():
             def JInfo():
                     with st.expander(f'**{st.session_state["lwj"]}**とは？'):
                         st.markdown(f'**{st.session_state["lwj"]}**というジャンルは')
-                        st.markdown("--------ここにジャンルの説明--------")
+                        st.markdown('<span style = "color:yellow;">--------ここにジャンルの説明--------</span>', unsafe_allow_html=True)
         
             JInfo()
         st.form_submit_button(label = "決定", on_click = change_page)
