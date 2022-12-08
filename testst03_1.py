@@ -9,7 +9,6 @@ import streamlit as st
 #import pandas as pd
 from PIL import Image
 import time
-inport time
 
 st.title('グループ制作サンプル')
 
@@ -25,6 +24,8 @@ TList = ["やや低め", "平均程度", "高め"]
 HSList = ["短め", "普通", "長め"]
 
 WJList = ["きれい目", "アメカジ", "ストリート", "トラッド", "ワーク", "サーフ"]
+
+wear01 = ["Tシャツ", "スウェット", "ジャケット", "パーカー", "セーター", "カーディガン", "コート", "ダウンジャケット", "シャツ", "ポロシャツ", "タートルネック"]
 
 
 
@@ -60,8 +61,7 @@ def page1():
         
         st.radio("あなたの髪型は？", HSList, key="yhs")
         
-        st.selectbox("あなたの好きなジャンルは？", WJList, key="lwj")
-            
+        st.selectbox("あなたの好きな上の服は？", WJList, key="lwj")          
         if st.form_submit_button("ジャンルの説明の表示/更新"):
             def JInfo():
                     with st.expander(f'**{st.session_state["lwj"]}**とは？'):
