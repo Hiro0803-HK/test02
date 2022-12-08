@@ -17,6 +17,8 @@ PAGE = st.sidebar.selectbox(
     key="page-select"
     )
 
+colp1_01, colp1_02, colp1_03 = st.columns(3)
+
 YBCList = ["瘦せ型", "普通", "ふくよか"]
 
 TList = ["やや低め", "平均程度", "高め"]
@@ -34,9 +36,6 @@ div[data-baseweb = "popover"] ul {
 div.st-bh{
     background-color:#239ba6;
 }
-div.st-b8{
-    background-color:blue
-}
 
 </style>
 """, unsafe_allow_html=True)
@@ -48,25 +47,23 @@ def page1():
             st.session_state["page-select"] = "ページ2"
     
        with st.form(key="my_form01"):
-    
-        st.radio("あなたの体型は", YBCList, key="ybc")
 
-        st.write(st.session_state["ybc"])
-        
-        st.radio("あなたの身長は？", TList, key="ytl")
-        
-        st.radio("あなたの髪型は？", HSList, key="yhs")
-        
-        st.selectbox("あなたの好きなジャンルは？", WJList, key="lwj")
+            st.radio("あなたの体型は", YBCList, key="ybc")
             
-        if st.form_submit_button("ジャンルの説明の表示/更新"):
-            def JInfo():
-                    with st.expander(f'**{st.session_state["lwj"]}**とは？'):
-                        st.markdown(f'**{st.session_state["lwj"]}**というジャンルは')
-                        st.markdown('<span style = "color:yellow;">--------ここにジャンルの説明--------</span>', unsafe_allow_html=True)
-        
-            JInfo()
-        st.form_submit_button(label = "決定", on_click = change_page)
+            st.radio("あなたの身長は？", TList, key="ytl")
+            
+            st.radio("あなたの髪型は？", HSList, key="yhs")
+            
+            st.selectbox("あなたの好きなジャンルは？", WJList, key="lwj")
+
+            if st.form_submit_button("ジャンルの説明の表示/更新"):
+                def JInfo():
+                        with st.expander(f'**{st.session_state["lwj"]}**とは？'):
+                            st.markdown(f'**{st.session_state["lwj"]}**というジャンルは')
+                            st.markdown('<span style = "color:yellow;">--------ここにジャンルの説明--------</span>', unsafe_allow_html=True)
+            
+                JInfo()
+            st.form_submit_button(label = "決定", on_click = change_page)
 
 def page2():
         
@@ -106,7 +103,6 @@ if PAGE == "ページ1":
     
 elif PAGE == "ページ2":
     page2()
-
 
 
 
