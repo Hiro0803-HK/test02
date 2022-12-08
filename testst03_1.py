@@ -27,6 +27,7 @@ WJList = ["きれい目", "アメカジ", "ストリート", "トラッド", "�
 
 wear01 = ["Tシャツ", "スウェット", "ジャケット", "パーカー", "セーター", "カーディガン", "コート", "ダウンジャケット", "シャツ", "ポロシャツ", "タートルネック"]
 
+wear02 = ["ジーパン", "チノパン", "スウェットパンツ", "カーゴパンツ", "スラックス", "イージーパンツ", "スキニー", "フレアパンツ", "ショートパンツ", "ジョガーパンツ", "コーディルー", "レザーパンツ"]
 
 
 st.markdown(
@@ -37,9 +38,6 @@ div[data-baseweb = "popover"] ul {
 }
 div.st-bh{
     background-color:#239ba6;
-}
-div.st-b8{
-    background-color:blue
 }
 
 </style>
@@ -61,14 +59,8 @@ def page1():
         
         st.radio("あなたの髪型は？", HSList, key="yhs")
         
-        st.selectbox("あなたの好きな上の服は？", WJList, key="lwj")          
-        if st.form_submit_button("ジャンルの説明の表示/更新"):
-            def JInfo():
-                    with st.expander(f'**{st.session_state["lwj"]}**とは？'):
-                        st.markdown(f'**{st.session_state["lwj"]}**というジャンルは')
-                        st.markdown('<span style = "color:yellow;">--------ここにジャンルの説明--------</span>', unsafe_allow_html=True)
-        
-            JInfo()
+        st.selectbox("あなたの好きな上の服は？", wear01, key="lw")         
+
         st.form_submit_button(label = "決定", on_click = change_page)
 
 def page2():
@@ -82,7 +74,7 @@ def page2():
            nybc = st.session_state["ybc"]
            nytl = st.session_state["ytl"]
            nyhs = st.session_state["yhs"]
-           nywj = st.session_state["lwj"]
+           nywj = st.session_state["lw"]
 
            LC = [nybc, nytl, nyhs, nywj]
 
