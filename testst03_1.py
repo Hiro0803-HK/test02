@@ -17,18 +17,21 @@ PAGE = st.sidebar.selectbox(
     key="page-select"
     )
 
-YBCList = ["瘦せ型", "普通", "ふくよか"]
+YBCList = ["瘦せ型", "普通", "ふくよか"] 
 
 TList = ["やや低め", "平均程度", "高め"]
 
-HSList = ["短め", "普通", "長め"]
+IMList = ["清楚", "クール", "明るめ", "大人", "05"]
+
+YSize = ["とてもぴったり", "ぴったり", "少しぴったり", "普通", "少しゆったり", "ゆったり", "とてもゆったり"]
+
+YMsk = ["黒", "白", "グレー", "紺", "青", "茶色", "ピンク", "緑", "ベージュ"]
 
 WJList = ["きれい目", "アメカジ", "ストリート", "トラッド", "ワーク", "サーフ"]
 
 wear01 = ["Tシャツ", "スウェット", "ジャケット", "パーカー", "セーター", "カーディガン", "コート", "ダウンジャケット", "シャツ", "ポロシャツ", "タートルネック"]
 
-wear02 = ["ジーパン", "チノパン", "スウェットパンツ", "カーゴパンツ", "スラックス", "イージーパンツ", "スキニー", "フレアパンツ", "ショートパンツ", "ジョガーパンツ", "コーディルー", "レザーパンツ"]
-
+wear02 = {"ジーパン":5, "チノパン":5, "スウェットパンツ":3, "カーゴパンツ":4, "スラックス":4, "イージーパンツ":5, "スキニー":6, "フレアパンツ":7, "ショートパンツ":8, "ジョガーパンツ":9, "コーディルー":10, "レザーパンツ":11}
 
 st.markdown(
 """
@@ -43,6 +46,10 @@ div.st-bh{
 </style>
 """, unsafe_allow_html=True)
 
+#nwear = [fuku for fuku, score in wear02.items() if score == 5]
+
+#st.write(nwear)
+
 def page1():
     
        def change_page():
@@ -51,16 +58,16 @@ def page1():
     
        with st.form(key="my_form01"):
     
+        st.slider("あなたの身長は？", 100, 200, 150, key="ytl")
+        
         st.radio("あなたの体型は", YBCList, key="ybc")
+        
+        st.radio("あなたの目指す雰囲気は？", IMList, key="yhs")
 
-        st.write(st.session_state["ybc"])
-        
-        st.radio("あなたの身長は？", TList, key="ytl")
-        
-        st.radio("あなたの髪型は？", HSList, key="yhs")
-        
-        st.selectbox("あなたの好きな上の服は？", wear01, key="lw")         
+        st.select_slider("あなたの着てみたいサイズ感は", YSize, YSize[3], key="ysz")  
 
+        st.selectbox("あなたの好きなマスクの色は", YMsk, key="Ymk")
+      
         st.form_submit_button(label = "決定", on_click = change_page)
 
 def page2():
@@ -71,22 +78,9 @@ def page2():
             
         with st.form(key="my_form01"):
 
-           nybc = st.session_state["ybc"]
-           nytl = st.session_state["ytl"]
-           nyhs = st.session_state["yhs"]
-           nywj = st.session_state["lw"]
+             st.multiselect("あなたの好きな服は")
 
-           LC = [nybc, nytl, nyhs, nywj]
 
-           YLC = '_'.join(LC)
-
-           st.write(f'体型が{nybc}で身長が{nytl}で髪型が{nyhs}で{nywj}が好きな人は')
-        
-           st.write(YLC + "(画像のパス)")
-           
-           #time.sleep(3)
-           #st.image(f'{YLC}.png')
-        
            st.form_submit_button(label = "戻る", on_click = change_page)
     
         
