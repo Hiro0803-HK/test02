@@ -19,6 +19,8 @@ PAGE = st.sidebar.selectbox(
 
 YBCList = ["瘦せ型", "普通", "ふくよか"] 
 
+colp1_01, colp1_02, colp1_03 = st.columns(3)
+
 TList = ["やや低め", "平均程度", "高め"]
 
 IMList = ["清楚", "クール", "明るめ", "大人", "モード"]
@@ -71,7 +73,8 @@ def page1():
        st.selectbox("あなたの好きなマスクの色は", YMsk, key="Ymk")
       
        st.button(label = "決定", on_click = change_page)
-
+=======
+      
 def page2():
         
         def change_page():
@@ -112,7 +115,6 @@ elif PAGE == "ページ2":
     
 elif PAGE == "ページ3":
     page3()
-
 
 
 
