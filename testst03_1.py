@@ -56,21 +56,21 @@ def page1():
             
             st.session_state["page-select"] = "ページ2"
     
-       with st.form(key="my_form01"):
+
     
-        st.slider("あなたの身長は？", 100, 200, 150, key="ytl")
+       st.slider("あなたの身長は？", 100, 200, 150, key="ytl")
         
-        st.radio("あなたの体型は", YBCList, key="ybc")
+       st.radio("あなたの体型は", YBCList, key="ybc")
         
-        st.radio("あなたの目指す雰囲気は？", IMList, key="yhs", horizontal=True)
+       st.radio("あなたの目指す雰囲気は？", IMList, key="yhs", horizontal=True)
         
-        st.write("ここに画像挿入")
+       st.write("ここに画像挿入")
 
-        st.select_slider("あなたの着てみたいサイズ感は", YSize, YSize[3], key="ysz")  
+       st.select_slider("あなたの着てみたいサイズ感は", YSize, YSize[3], key="ysz")  
 
-        st.selectbox("あなたの好きなマスクの色は", YMsk, key="Ymk")
+       st.selectbox("あなたの好きなマスクの色は", YMsk, key="Ymk")
       
-        st.form_submit_button(label = "決定", on_click = change_page)
+       st.button(label = "決定", on_click = change_page)
 
 def page2():
         
@@ -82,13 +82,13 @@ def page2():
             
             st.session_state["page-select"] = "ページ3"
             
-        with st.form(key="my_form01"):
 
 
 
 
-           st.form_submit_button(label = "戻る", on_click = change_page)
-           st.form_submit_button(label = "次へ", on_click = next_page)
+
+        st.button(label = "戻る", on_click = change_page)
+        st.button(label = "次へ", on_click = next_page)
     
         
 def page3():
@@ -97,9 +97,8 @@ def page3():
         
         st.session_state["page-select"] = "ページ1"
         
-    with st.form(key="my_form01"):
-        
-        st.write("結果表示")
+
+    st.write("結果表示")
 
 
 
@@ -113,7 +112,6 @@ elif PAGE == "ページ2":
     
 elif PAGE == "ページ3":
     page3()
-
 
 
 
