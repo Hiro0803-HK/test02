@@ -71,8 +71,6 @@ def page1():
             
             st.session_state["page-select"] = "ページ2"
     
-
-    
        st.slider("あなたの身長は？", 100, 200, 150, key="ytl")
        st.write("\n")
 
@@ -184,15 +182,28 @@ def page2():
 def page3():
     
     def change_page():
+                
+          st.session_state["page-select"] = "ページ1"
         
-        st.session_state["page-select"] = "ページ1"
+        image = Image.open('IMG_7837 (2).PNG')
+
+        with pg3_col01:
+            st.write("あなたに似合う服の系統は")
+
+        with pg3_col02:
+            st.empty()  
+
+
+        with pg3_col03:
+            st.header("ストリート")
+            st.image(image, caption='IMG_7837 (2).PNG',use_column_width=True)
+
         
-
-    st.write("結果表示")
-
-
-
-
+         
+         
+         
+        st.button(label = "戻る", on_click = change_page)
+    
 
 if PAGE == "ページ1":
     page1()
@@ -202,5 +213,4 @@ elif PAGE == "ページ2":
     
 elif PAGE == "ページ3":
     page3()
-
 
