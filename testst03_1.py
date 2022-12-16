@@ -17,7 +17,9 @@ PAGE = st.sidebar.selectbox(
     key="page-select"
     )
 
-YBCList = ["瘦せ型", "普通", "ふくよか"]
+YBCList = ["瘦せ型", "普通", "ふくよか"] 
+
+colp1_01, colp1_02, colp1_03 = st.columns(3)
 
 cont = st.container()
 cont2 = st.container()
@@ -46,7 +48,6 @@ wear01 = ["Tシャツ", "スウェット", "ジャケット", "パーカー", "�
 
 wear02 = {"ジーパン":5, "チノパン":5, "スウェットパンツ":3, "カーゴパンツ":4, "スラックス":4, "イージーパンツ":5, "スキニー":6, "フレアパンツ":7, "ショートパンツ":8, "ジョガーパンツ":9, "コーディルー":10, "レザーパンツ":11}
 
-YLW = []
 
 st.markdown(
 """
@@ -86,6 +87,7 @@ def page1():
        st.selectbox("あなたの好きなマスクの色は", YMsk, key="Ymk")
       
        st.button(label = "決定", on_click = change_page)
+
       
 def page2():
         
@@ -129,7 +131,7 @@ def page2():
             st.empty()
 
      with colp4_02:
-            st.multiselect("あなたの好きな服は", wear02, key="Lwear02")
+            st.multiselect("あなたの好きな下の服は", wear02, key="Lwear02")
             YLP = st.session_state["Lwear02"]
      with colp4_03:
             st.empty()
@@ -152,6 +154,21 @@ def page2():
      st.button(label = "戻る", on_click = change_page)
      st.button(label = "次へ", on_click = next_page)
 
+
+             st.session_state["page-select"] = "ページ1"
+             
+        def next_page():
+            
+            st.session_state["page-select"] = "ページ3"
+            
+
+
+
+
+
+        st.button(label = "戻る", on_click = change_page)
+        st.button(label = "次へ", on_click = next_page)
+    
         
 def page3():
     

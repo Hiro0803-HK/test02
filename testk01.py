@@ -9,3 +9,7 @@ import streamlit as st
 
 
 st.title('グループ制作サンプル')
+st.write("変更sh")
+st.write("変更2")
+st.write("もう一度")
+st.write("practice01")
