@@ -16,7 +16,7 @@ PAGE = st.sidebar.selectbox(
     key="page-select"
     )
 
-YBCList = ["瘦せ型", "普通", "ふくよか"] 
+YBCList = ["瘦せ型　　　　　　　　　　", "普通　　　　　　　　　　", "がっちり"] 
 
 colp1_01, colp1_02, colp1_03 = st.columns(3)
 
@@ -35,7 +35,7 @@ Col02 = [colp3_01, colp3_02, colp3_03]
 
 TList = ["やや低め", "平均程度", "高め"]
 
-IMList = ["清楚", "クール", "明るめ", "大人", "モード"]
+IMList = ["清楚", "クール", "明るめ", "大人","渋い"]
 
 YSize = ["とてもぴったり", "ぴったり", "少しぴったり", "普通", "少しゆったり", "ゆったり", "とてもゆったり"]
 
@@ -74,19 +74,46 @@ def page1():
 
     
        st.slider("あなたの身長は？", 100, 200, 150, key="ytl")
+       st.write("\n")
+
+       st.write("あなたの体系は？")
+       col1,col2,col3 = st.columns(3)     
+       with col1:
+           image = Image.open('ほっそり.png')
+           st.image(image,width=70)
+           
+       with col2:
+           image = Image.open('標準.png')
+           st.image(image,width=82)
+     
+       with col3:
+           image = Image.open('がっちり.png')
+           st.image(image,width=100)
+
         
-       st.radio("あなたの体型は", YBCList, key="ybc")
-        
+           
+       
+ 
+           
+       st.radio("　", YBCList, key="ybc",horizontal=True)
+       st.write("\n")
+ 
+       
        st.radio("あなたの目指す雰囲気は？", IMList, key="yhs", horizontal=True)
+       st.write("\n")
         
-       st.write("ここに画像挿入")
+      # st.write("ここに画像挿入")
 
-       st.select_slider("あなたの着てみたいサイズ感は", YSize, YSize[3], key="ysz")  
-
-       st.selectbox("あなたの好きなマスクの色は", YMsk, key="Ymk")
+       st.select_slider("あなたの着たいサイズ感は？", YSize, YSize[3], key="ysz")
+       st.write("\n")
+       
+       
+       st.selectbox("あなたの好きなマスクの色は？", YMsk, key="Ymk")
+       st.write("\n")
+            
       
+        
        st.button(label = "決定", on_click = change_page)
-
       
 def page2():
         
