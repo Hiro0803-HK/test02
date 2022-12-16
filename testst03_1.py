@@ -18,8 +18,6 @@ PAGE = st.sidebar.selectbox(
 
 YBCList = ["瘦せ型　　　　　　　　　　", "普通　　　　　　　　　　", "がっちり"] 
 
-colp1_01, colp1_02, colp1_03 = st.columns(3)
-
 cont = st.container()
 cont2 = st.container()
 cont3 = st.container()
@@ -29,6 +27,7 @@ colp2_01, colp2_02, colp2_03 = cont.columns([0.1, 6, 0.1])
 colp1_01, colp1_02, colp1_03 = cont2.columns(3)
 colp4_01, colp4_02, colp4_03 = cont3.columns([0.1, 6, 0.1])
 colp3_01, colp3_02, colp3_03 = cont4.columns(3)
+pg3_col01, pg3_col02, pg3_col03 = st.columns(3)
 
 Col01 = [colp1_01, colp1_02, colp1_03]
 Col02 = [colp3_01, colp3_02, colp3_03]
@@ -185,16 +184,16 @@ def page3():
                 
           st.session_state["page-select"] = "ページ1"
         
-        image = Image.open('IMG_7837 (2).PNG')
+    image = Image.open('IMG_7837 (2).PNG')
 
-        with pg3_col01:
+    with pg3_col01:
             st.write("あなたに似合う服の系統は")
 
-        with pg3_col02:
+    with pg3_col02:
             st.empty()  
 
 
-        with pg3_col03:
+    with pg3_col03:
             st.header("ストリート")
             st.image(image, caption='IMG_7837 (2).PNG',use_column_width=True)
 
@@ -202,7 +201,7 @@ def page3():
          
          
          
-        st.button(label = "戻る", on_click = change_page)
+    st.button(label = "戻る", on_click = change_page)
     
 
 if PAGE == "ページ1":
