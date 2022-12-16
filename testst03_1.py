@@ -8,24 +8,46 @@ import streamlit as st
 #import numpy as np
 #import pandas as pd
 from PIL import Image
-import time
+#import time
 
 st.title('グループ制作サンプル')
 
 PAGE = st.sidebar.selectbox(
-    "ページ選択", ["ページ1", "ページ2"], 
+    "ページ選択", ["ページ1", "ページ2","ページ3"], 
     key="page-select"
     )
 
+YBCList = ["瘦せ型", "普通", "ふくよか"] 
+
 colp1_01, colp1_02, colp1_03 = st.columns(3)
 
-YBCList = ["瘦せ型", "普通", "ふくよか"]
+cont = st.container()
+cont2 = st.container()
+cont3 = st.container()
+cont4 = st.container()
+
+colp2_01, colp2_02, colp2_03 = cont.columns([0.1, 6, 0.1])
+colp1_01, colp1_02, colp1_03 = cont2.columns(3)
+colp4_01, colp4_02, colp4_03 = cont3.columns([0.1, 6, 0.1])
+colp3_01, colp3_02, colp3_03 = cont4.columns(3)
+
+Col01 = [colp1_01, colp1_02, colp1_03]
+Col02 = [colp3_01, colp3_02, colp3_03]
 
 TList = ["やや低め", "平均程度", "高め"]
 
-HSList = ["短め", "普通", "長め"]
+IMList = ["清楚", "クール", "明るめ", "大人", "モード"]
+
+YSize = ["とてもぴったり", "ぴったり", "少しぴったり", "普通", "少しゆったり", "ゆったり", "とてもゆったり"]
+
+YMsk = ["白", "黒", "グレー", "ベージュ", "茶色", "青", "紺", "ピンク", "緑"]
 
 WJList = ["きれい目", "アメカジ", "ストリート", "トラッド", "ワーク", "サーフ"]
+
+wear01 = ["Tシャツ", "スウェット", "ジャケット", "パーカー", "セーター", "カーディガン", "コート", "ダウンジャケット", "シャツ", "ポロシャツ", "タートルネック"]
+
+wear02 = {"ジーパン":5, "チノパン":5, "スウェットパンツ":3, "カーゴパンツ":4, "スラックス":4, "イージーパンツ":5, "スキニー":6, "フレアパンツ":7, "ショートパンツ":8, "ジョガーパンツ":9, "コーディルー":10, "レザーパンツ":11}
+
 
 st.markdown(
 """
@@ -40,59 +62,107 @@ div.st-bh{
 </style>
 """, unsafe_allow_html=True)
 
+#nwear = [fuku for fuku, score in wear02.items() if score == 5]
+
+#st.write(nwear)
+
 def page1():
     
        def change_page():
             
             st.session_state["page-select"] = "ページ2"
     
-       with st.form(key="my_form01"):
 
-            st.radio("あなたの体型は", YBCList, key="ybc")
-            
-            st.radio("あなたの身長は？", TList, key="ytl")
-            
-            st.radio("あなたの髪型は？", HSList, key="yhs")
-            
-            st.selectbox("あなたの好きなジャンルは？", WJList, key="lwj")
+    
+       st.slider("あなたの身長は？", 100, 200, 150, key="ytl")
+        
+       st.radio("あなたの体型は", YBCList, key="ybc")
+        
+       st.radio("あなたの目指す雰囲気は？", IMList, key="yhs", horizontal=True)
+        
+       st.write("ここに画像挿入")
 
-            if st.form_submit_button("ジャンルの説明の表示/更新"):
-                def JInfo():
-                        with st.expander(f'**{st.session_state["lwj"]}**とは？'):
-                            st.markdown(f'**{st.session_state["lwj"]}**というジャンルは')
-                            st.markdown('<span style = "color:yellow;">--------ここにジャンルの説明--------</span>', unsafe_allow_html=True)
-            
-                JInfo()
-            st.form_submit_button(label = "決定", on_click = change_page)
+       st.select_slider("あなたの着てみたいサイズ感は", YSize, YSize[3], key="ysz")  
 
+       st.selectbox("あなたの好きなマスクの色は", YMsk, key="Ymk")
+      
+       st.button(label = "決定", on_click = change_page)
+
+      
 def page2():
         
-        def change_page():
-            
-             st.session_state["page-select"] = "ページ1"
-            
-        with st.form(key="my_form01"):
-
-           nybc = st.session_state["ybc"]
-           nytl = st.session_state["ytl"]
-           nyhs = st.session_state["yhs"]
-           nywj = st.session_state["lwj"]
-
-           LC = [nybc, nytl, nyhs, nywj]
-
-           YLC = '_'.join(LC)
-
-           st.write(f'体型が{nybc}で身長が{nytl}で髪型が{nyhs}で{nywj}が好きな人は')
+     def change_page():
         
-           st.write(YLC + "(画像のパス)")
-           
-           #time.sleep(3)
-           #st.image(f'{YLC}.png')
+         st.session_state["page-select"] = "ページ1"
+            
+     def next_page():
         
-           st.form_submit_button(label = "戻る", on_click = change_page)
+         st.session_state["page-select"] = "ページ3"
+
+     with colp2_01:
+            st.empty()
+
+     with colp2_02:
+
+            st.multiselect("あなたの好きな上の服は", wear01, key="Lwear01")
+            YLW = st.session_state["Lwear01"]
+
+     with colp2_03:
+
+            st.empty()
+     try:
+
+         i = 0
+         cnt = 0
+         while(True):
+
+            with Col01[cnt]:
+                st.write(YLW[i])
+            
+            cnt = cnt + 1
+            i = i + 1
+            if cnt > 2:
+                cnt = 0
+
+     except IndexError:
+            st.empty()
+            
+     with colp4_01:
+            st.empty()
+
+     with colp4_02:
+            st.multiselect("あなたの好きな下の服は", wear02, key="Lwear02")
+            YLP = st.session_state["Lwear02"]
+     with colp4_03:
+            st.empty()
+     try:
+         i = 0
+         cnt = 0
+         while(True):
+
+            with Col02[cnt]:
+                st.write(YLP[i])
+            
+            cnt = cnt + 1
+            i = i + 1
+            if cnt > 2:
+                cnt = 0
+
+     except IndexError:
+        st.empty()
+
+     st.button(label = "戻る", on_click = change_page)
+     st.button(label = "次へ", on_click = next_page)
+
+        
+def page3():
     
+    def change_page():
+        
+        st.session_state["page-select"] = "ページ1"
         
 
+    st.write("結果表示")
 
 
 
@@ -103,8 +173,8 @@ if PAGE == "ページ1":
     
 elif PAGE == "ページ2":
     page2()
-
-
-
+    
+elif PAGE == "ページ3":
+    page3()
 
 
