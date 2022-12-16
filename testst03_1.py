@@ -9,7 +9,7 @@ import streamlit as st
 #import pandas as pd
 from PIL import Image
 
-st.title('グループ制作サンプル')
+st.title('マイクロゼット')
 
 PAGE = st.sidebar.selectbox(
     "ページ選択", ["ページ1", "ページ2","ページ3"], 
