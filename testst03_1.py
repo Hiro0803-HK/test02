@@ -189,37 +189,30 @@ def page3():
     def change_page():
                 
           st.session_state["page-select"] = "ページ1"
-    
+
     image = Image.open('IMG_7837 (2).PNG')
-        
+    image1 = Image.open('IMG_7915 (2).png')
+
     with colp6_01:
         st.write("あなたに似合う服の系統は?")
         st.header("ストリート")
-        st.write("本当ならここに説明文が来るはず今は仮沖で描いている。本当ならここに説明文が来るはず今は仮沖で描いている。本当ならここに説明文が来るはず今は仮沖で描いている。本当ならここに説明文が来るはず今は仮沖で描いている。")
+        st.write("アウトドア系ファッションは登山や釣りなどのアウトドアできるアイテムを日常に取り入れたファッションスタイルです。")
+        st.write("このアイテムは防寒・防水などの機能面に優れており、デザイン性も高いため、おしゃれで快適な日常を作ってくれるファッション系統です。")
+        st.write("\n")
+        st.write("\n")
+        st.write("\n")
 
         
     with colp6_02:
         st.empty()
     
     with colp7_01:
-        st.image(image, caption='IMG_7837 (2).PNG',use_column_width=True)
+
+           st.image(image,width=150)
 
     with colp7_02:
-        st.image(image, caption='がっちり.png',use_column_width=True)
-    #with pg3_col01:
-     #       st.write("あなたに似合う服の系統は")
-            
 
-    #with pg3_col02:
-     #       st.empty()  
-
-
-    #with pg3_col03:
-     #       st.header("ストリート")
-      #      st.image(image, caption='IMG_7837 (2).PNG',use_column_width=True)
-
-        
-         
+           st.image(image1,width=100)
          
          
     st.button(label = "戻る", on_click = change_page)
