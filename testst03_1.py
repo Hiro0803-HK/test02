@@ -38,6 +38,7 @@ Col02 = [colp3_01, colp3_02, colp3_03]
 
 
 
+
 TList = ["やや低め", "平均程度", "高め"]
 
 IMList = ["清楚", "クール", "明るめ", "大人","渋い"]
@@ -190,6 +191,7 @@ def page3():
                 
           st.session_state["page-select"] = "ページ1"
 
+
     image = Image.open('IMG_7837 (2).PNG')
     image1 = Image.open('IMG_7915 (2).png')
 
@@ -202,17 +204,20 @@ def page3():
         st.write("\n")
         st.write("\n")
 
+
         
     with colp6_02:
         st.empty()
     
     with colp7_01:
 
+
            st.image(image,width=150)
 
     with colp7_02:
 
            st.image(image1,width=100)
+
          
          
     st.button(label = "戻る", on_click = change_page)
@@ -226,3 +231,5 @@ elif PAGE == "ページ2":
     
 elif PAGE == "ページ3":
     page3()
+
+
