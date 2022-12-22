@@ -50,18 +50,18 @@ def page1():
             st.session_state["page-select"] = "ページ2"
     
 
-    
+       
        st.slider("あなたの身長は？", 100, 200, 150, key="ytl")
        st.write("\n")
 
        st.write("あなたの体系は？")
        col1,col2,col3 = st.columns(3)     
        with col1:
-           image = Image.open('ほっそりサンプル.png')
+           image = Image.open('ほっそり.png')
            st.image(image,width=70)
            
        with col2:
-           image = Image.open('標準サンプル.png')
+           image = Image.open('標準.png')
            st.image(image,width=82)
      
        with col3:
