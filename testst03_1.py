@@ -22,15 +22,22 @@ cont = st.container()
 cont2 = st.container()
 cont3 = st.container()
 cont4 = st.container()
+cont6 = st.container()
+cont7 = st.container()
 
 colp2_01, colp2_02, colp2_03 = cont.columns([0.1, 6, 0.1])
 colp1_01, colp1_02, colp1_03 = cont2.columns(3)
 colp4_01, colp4_02, colp4_03 = cont3.columns([0.1, 6, 0.1])
 colp3_01, colp3_02, colp3_03 = cont4.columns(3)
 pg3_col01, pg3_col02, pg3_col03 = st.columns(3)
+colp6_01, colp6_02 = cont6.columns([6,0.1])
+colp7_01,colp7_02 = cont7.columns([3,3])
 
 Col01 = [colp1_01, colp1_02, colp1_03]
 Col02 = [colp3_01, colp3_02, colp3_03]
+
+
+
 
 TList = ["やや低め", "平均程度", "高め"]
 
@@ -183,22 +190,34 @@ def page3():
     def change_page():
                 
           st.session_state["page-select"] = "ページ1"
-        
+
+
     image = Image.open('IMG_7837 (2).PNG')
+    image1 = Image.open('IMG_7915 (2).png')
 
-    with pg3_col01:
-            st.write("あなたに似合う服の系統は")
+    with colp6_01:
+        st.write("あなたに似合う服の系統は?")
+        st.header("ストリート")
+        st.write("アウトドア系ファッションは登山や釣りなどのアウトドアできるアイテムを日常に取り入れたファッションスタイルです。")
+        st.write("このアイテムは防寒・防水などの機能面に優れており、デザイン性も高いため、おしゃれで快適な日常を作ってくれるファッション系統です。")
+        st.write("\n")
+        st.write("\n")
+        st.write("\n")
 
-    with pg3_col02:
-            st.empty()  
-
-
-    with pg3_col03:
-            st.header("ストリート")
-            st.image(image, caption='IMG_7837 (2).PNG',use_column_width=True)
 
         
-         
+    with colp6_02:
+        st.empty()
+    
+    with colp7_01:
+
+
+           st.image(image,width=150)
+
+    with colp7_02:
+
+           st.image(image1,width=100)
+
          
          
     st.button(label = "戻る", on_click = change_page)
@@ -212,4 +231,5 @@ elif PAGE == "ページ2":
     
 elif PAGE == "ページ3":
     page3()
+
 
