@@ -102,6 +102,18 @@ def page2():
         def next_page():
             
             st.session_state["page-select"] = "ページ3"
+
+        AAA = st.session_state["ybc"]
+
+        st.write(AAA)
+
+        match AAA:
+
+            case "瘦せ型":
+                st.write(AAA)
+            
+            case _:
+                st.write("none")
             
 
 
@@ -133,3 +145,37 @@ elif PAGE == "ページ2":
     
 elif PAGE == "ページ3":
     page3()
+
+
+
+
+
+
+
+
+
+
+
+
+"""
+            if st.session_state["yhs"] =="清楚":
+
+                        
+
+                        st.empty()
+
+            elif st.session_state["yhs"] =="クール":
+                        st.empty()
+
+            elif st.session_state["yhs"] =="大人":
+                        st.empty()
+            
+            elif st.session_state["yhs"] =="明るめ":
+                        st.empty()
+
+            elif st.session_state["yhs"] =="渋め":
+                        st.empty()
+
+            elif st.session_state["yhs"] =="シンプル":
+                        st.empty()
+            """
