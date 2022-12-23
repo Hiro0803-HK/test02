@@ -34,13 +34,13 @@ Col02 = [colp3_01, colp3_02, colp3_03]
 
 TList = ["やや低め", "平均程度", "高め"]
 
-IMList = ["清楚", "クール", "明るめ", "大人","渋い", "シンプル"]
+IMList = ["清楚", "クール", "明るめ", "大人","渋め", "シンプル"]
 
 YSize = ["とてもぴったり", "ぴったり", "少しぴったり", "普通", "少しゆったり", "ゆったり", "とてもゆったり"]
 
 YMsk = ["白", "黒", "グレー", "ベージュ", "茶色", "青", "紺", "ピンク", "緑"]
 
-WJList = ["きれい目", "アメカジ", "ストリート", "トラッド", "ワーク", "サーフ", "ロック"]
+WJlist = ["きれい目", "アメカジ", "ストリート", "トラッド", "ワーク", "サーフ", "ロック"]
 
 wear01 = {"Tシャツ":0, "スウェット":0, "ジャケット":0, "パーカー":0, "セーター":0, "カーディガン":0, "コート":0, "ダウンジャケット":0, "シャツ":0, "ポロシャツ":0, "タートルネック":0}
 
@@ -100,7 +100,7 @@ def page1():
        st.radio("あなたの目指す雰囲気は？", IMList, key="yhs", horizontal=True)
        st.write("\n")
         
-      # st.write("ここに画像挿入")
+    
 
        st.select_slider("あなたの着たいサイズ感は？", YSize, YSize[3], key="ysz")
        st.write("\n")
@@ -197,50 +197,101 @@ def page3():
 
     def Genre_System():
         try:
-            UsersData01 = st.session_state["Lwear01"]
+            USersData01 = st.session_state["Lwear01"]
             UsersData02 = st.session_state["Lwear02"]
             UsersBC = st.session_state["ybc"]
 
+           
+#######################################################################################身長と体型
             if st.session_state["ytl"] <= 165:
 
-                WJList.remove["トラッド"]
+                WJlist.remove("トラッド")
+                WJlist.remove("きれい目")
+                WJlist.remove("ロック")
+               
+                if UsersBC ==  "瘦せ型　　　　　　　　　　":
 
-                match UsersBC:
-
-                    case "瘦せ型　　　　　　　　　　":
-
-                            WJList.remove["アメカジ"]
-                            WJList.remove["サーフ"]
+                    WJlist.remove("アメカジ")
+                    WJlist.remove("サーフ")
+                    WJlist.remove("ワーク")          
        
             elif st.session_state["ytl"] > 165 and st.session_state["ytl"] < 175:
 
-                WJList.remove["トラッド"]
+                WJlist.remove("ロック")
+                
+                
+                if UsersBC ==  "瘦せ型　　　　　　　　　　":
 
-                match UsersBC:
+                    WJlist.remove("アメカジ")
+                    WJlist.remove("サーフ")
+                    WJlist.remove("ワーク")
 
-                    case "瘦せ型　　　　　　　　　　":
+                elif UsersBC ==  "がっちり":
 
-                            WJList.remove["アメカジ"]
-                            WJList.remove["サーフ"]
-                        
-                    case "がっちり":
+                    WJlist.remove("きれい目")
+                    WJlist.remove("トラッド")
+
+                               
+
+            elif st.session_state["ytl"] >= 175:
+                
 
                 
-                     st.empty()
-            
-            elif st.session_state["ytl"] >= 175:
+                    
+                if UsersBC ==  "瘦せ型　　　　　　　　　　":
 
-                st.empty()
+                        WJlist.remove("アメカジ")
+                        WJlist.remove("サーフ")
+                        WJlist.remove("ワーク")
         
+                elif UsersBC == "がっちり":
+
+                        WJlist.remove("きれい目")
+                        WJlist.remove("トラッド")
             
-        
+###########################################################################################
+
+            if st.session_state["yhs"] =="清楚":
+
+                Users = [i for i in WJlist if i == "きれい目" or i == "トラッド"]
+
+                
             
+            elif st.session_state["yhs"] =="クール":
+                       
+                Users = [i for i in WJlist if i == "きれい目" or i == "ストリート"]
+
+                
+            
+            elif st.session_state["yhs"] =="大人":
+                
+                Users = [i for i in WJlist if i == "ワーク" or i == "トラッド"]
+
+            elif st.session_state["yhs"] =="明るめ":
+
+                Users = [i for i in WJlist if i == "サーフ" or i == "アメカジ" or i == "ストリート"]
+            
+            elif st.session_state["yhs"] =="渋め":
+                
+                Users = [i for i in WJlist if i != "きれい目" or i != "ストリート"]
+                
+            
+            elif st.session_state["yhs"] =="シンプル":
+                        
+                Users = [i for i in WJlist if i == "きれい目" or i == "トラッド"]
+
+
+            if len(Users) == 0:
+                st.write("なし")
+            
+            else:
+                st.write(Users)
             
         except KeyError:
             st.empty()
         except IndexError:
             st.empty()
-
+        
     def change_page():
                 
           st.session_state["page-select"] = "ページ1"
@@ -248,8 +299,8 @@ def page3():
     image = Image.open('パーカー.PNG')
 
     with pg3_col01:
-            st.write("あなたに似合う服の系統は")
-            Genre_System()
+        st.write("あなたに似合う服の系統は")
+        Genre_System()
             
 
     with pg3_col02:
