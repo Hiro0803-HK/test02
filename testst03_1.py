@@ -327,3 +327,4 @@ elif PAGE == "ページ2":
 elif PAGE == "ページ3":
     page3()
 
+ 
