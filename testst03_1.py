@@ -40,7 +40,11 @@ YSize = ["とてもぴったり", "ぴったり", "少しぴったり", "普通"
 
 YMsk = ["白", "黒", "グレー", "ベージュ", "茶色", "青", "紺", "ピンク", "緑"]
 
-WJlist = ["きれい目", "アメカジ", "ストリート", "トラッド", "ワーク", "サーフ", "ロック", "アウトドア"]
+WJlist = ["きれい目", "アメカジ", "ストリート", "トラッド", "ワーク", "サーフ", "ロック"]
+
+wearup = {"Tシャツ","スウェット","ジャケット","パーカー","セーター","カーディガン","コート","ダウンジャケット","シャツ","ポロシャツ","タートルネック"}
+
+weardown = {"ジーパン","チノパン","スウェットパンツ","カーゴパンツ","スラックス","イージーパンツ","スキニー","ブレアパンツ","ショートパンツ","ジョガーパンツ","コーディルー","レザーパンツ"}
 
 #きれいめ　#パーカー、ポロシャツ
 wear01 = {"Tシャツ":0, "スウェット":0, "ジャケット":0, "パーカー":0, "セーター":0, "カーディガン":0, "コート":0, "ダウンジャケット":0, "シャツ":0, "ポロシャツ":0, "タートルネック":0}
@@ -109,8 +113,26 @@ div.st-bh{
 
 #st.write(nwear)
 
+def AAAA(arr, dict):
+
+    Keys = dict.keys()
+
+    Score = 0
+
+    for x in arr:
+        for y in Keys:
+            if x == y:
+                Score = Score + dict[x]
+            
+    return Score
+            
+
+
+
 def page1():
     
+    
+
        def change_page():
             
             st.session_state["page-select"] = "ページ2"
@@ -181,7 +203,7 @@ def page2():
             
      with colp2_02:
 
-            st.multiselect("あなたの好きな上の服は", wear01, key="Lwear01")
+            st.multiselect("あなたの好きな上の服は", wearup, key="Lwear01")
 
             YLW = st.session_state["Lwear01"]
 
@@ -210,7 +232,7 @@ def page2():
 
      with colp4_02:
 
-            st.multiselect("あなたの好きな下の服は", wear02, key="Lwear02")
+            st.multiselect("あなたの好きな下の服は", weardown, key="Lwear02")
             
             YLP = st.session_state["Lwear02"]
      with colp4_03:
@@ -238,6 +260,8 @@ def page2():
 def page3():
 
     st.write(st.session_state["ytl"])
+
+    st.write(AAAA(st.session_state["Lwear01"], wear03))
 
     def Genre_System():
         try:
@@ -297,31 +321,87 @@ def page3():
 
             if st.session_state["yhs"] =="清楚":
 
-                Users = [i for i in WJlist if i == "きれい目" or i == "トラッド"]
-
+                m0 = (AAAA(st.session_state["Lwear01"],wear01))
+                m1 = (AAAA(st.session_state["Lwear01"], wear04))
+                
+                if m0 > m1:
+                    st.write(m0)
+                elif m0 < m1:
+                    st.write(m1)
+                
+            
             elif st.session_state["yhs"] =="クール":
                        
-                Users = [i for i in WJlist if i == "きれい目" or i == "ストリート"]
-
+                m0 = st.write(AAAA(st.session_state["Lwear01"], wear01))
+                m1 = st.write(AAAA(st.session_state["Lwear01"], wear03))
+                
+                if m0 > m1:
+                    st.write(m0)
+                elif m0 < m1:
+                    st.write(m1)
+                
+            
             elif st.session_state["yhs"] =="大人":
                 
-                Users = [i for i in WJlist if i == "ワーク" or i == "トラッド"]
-
+                m0 = st.write(AAAA(st.session_state["Lwear01"], wear04))
+                m1 = st.write(AAAA(st.session_state["Lwear01"], wear05))
+                
+                if m0 > m1:
+                    st.write(m0)
+                elif m0 < m1:
+                    st.write(m1)
+                
             elif st.session_state["yhs"] =="明るめ":
 
-                Users = [i for i in WJlist if i == "サーフ" or i == "アメカジ" or i == "ストリート"]
-            
+                m0 = st.write(AAAA(st.session_state["Lwear01"], wear02))
+                m1 = st.write(AAAA(st.session_state["Lwear01"], wear03))
+                m2 = st.write(AAAA(st.session_state["Lwear01"], wear06))
+                
+                if m0 > m1:
+                    if m0 > m2:
+                        st.write(m0)
+                elif m1 > m0:
+                    if m1 > m2:
+                        st.write(m1)
+                elif m2 > m0:
+                    if m2 > m1:
+                        st.write(m2)
+                
             elif st.session_state["yhs"] =="渋め":
                 
-                Users = [i for i in WJlist if i != "きれい目" or i != "ストリート"]
+                m0 = st.write(AAAA(st.session_state["Lwear01"], wear02))
+                m1 = st.write(AAAA(st.session_state["Lwear01"], wear04))
+                m2 = st.write(AAAA(st.session_state["Lwear01"], wear05))
+                m3 = st.write(AAAA(st.session_state["Lwear01"], wear06))
+                m4 = st.write(AAAA(st.session_state["Lwear01"], wear07))
                 
+
+                if m0 >= m1 and m0 >= m2 and m0 >= m3 and m0 >= m4:
+                    st.write("m0")
+
+                if m1 >= m0 and m1 >= m2 and m1 >= m3 and m1 >= m4:
+                    st.write("m1")
+                    
+                if m2 >= m0 and m2 >= m1 and m2 >= m3 and m0 >= m4:
+                    st.write("m2")
+                    
+                if m3 >= m0 and m3 >= m1 and m3 >= m2 and m3 >= m4:
+                    st.write("m3")
+                    
+                if m4 >= m0 and m4 >= m1 and m4 >= m2 and m4 >= m3:
+                    st.write("m4")
+                
+
             
             elif st.session_state["yhs"] =="シンプル":
                         
-                Users = [i for i in WJlist if i == "きれい目" or i == "トラッド"]
-
-
-                    
+                m0 = st.write(AAAA(st.session_state["Lwear01"], wear01))
+                m1 = st.write(AAAA(st.session_state["Lwear01"], wear04))
+                
+                if m0 > m1:
+                    st.write(m0)
+                elif m1 > m0:
+                    st.write(m1)
 
             if len(Users) == 0:
                 st.write("なし")
@@ -338,7 +418,7 @@ def page3():
                 
           st.session_state["page-select"] = "ページ1"
         
-    image = Image.open('パーカー.PNG')
+    #image = Image.open('パーカー.PNG')
 
     with pg3_col01:
         st.write("あなたに似合う服の系統は")
@@ -351,7 +431,7 @@ def page3():
 
     with pg3_col03:
             st.header("ストリート")
-            st.image(image, caption='パーカー.PNG',use_column_width=True)
+            #st.image(image, caption='パーカー.PNG',use_column_width=True)
 
         
          
