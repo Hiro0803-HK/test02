@@ -326,82 +326,135 @@ def page3():
                 
                 if m0 > m1:
                     st.write(m0)
+                    st.write("きれいめ")
                 elif m0 < m1:
                     st.write(m1)
-                
+                    st.write("トラッド")
+                if m0 == m1:
+                    st.write(m0)
+                    st.write("きれいめ")
+                    st.write(m1)
+                    st.write("トラッド")
             
             elif st.session_state["yhs"] =="クール":
                        
-                m0 = st.write(AAAA(st.session_state["Lwear01"], wear01))
-                m1 = st.write(AAAA(st.session_state["Lwear01"], wear03))
+                m0 = (AAAA(st.session_state["Lwear01"], wear01))
+                m1 = (AAAA(st.session_state["Lwear01"], wear03))
                 
                 if m0 > m1:
                     st.write(m0)
+                    st.write("きれいめ")
                 elif m0 < m1:
                     st.write(m1)
-                
+                    st.write("ストリート")
+                if m0 == m1:
+                    st.write(m0)
+                    st.write("きれいめ")
+                    st.write(m1)
+                    st.write("ストリート")
             
             elif st.session_state["yhs"] =="大人":
                 
-                m0 = st.write(AAAA(st.session_state["Lwear01"], wear04))
-                m1 = st.write(AAAA(st.session_state["Lwear01"], wear05))
+                m0 = (AAAA(st.session_state["Lwear01"], wear04))
+                m1 = (AAAA(st.session_state["Lwear01"], wear05))
                 
                 if m0 > m1:
                     st.write(m0)
+                    st.write("トラッド")
                 elif m0 < m1:
                     st.write(m1)
+                    st.write("ワーク")
+                if m0 == m1:
+                    st.write(m0)
+                    st.write("トラッド")
+                    st.write(m1)
+                    st.write("ワーク")
                 
             elif st.session_state["yhs"] =="明るめ":
 
-                m0 = st.write(AAAA(st.session_state["Lwear01"], wear02))
-                m1 = st.write(AAAA(st.session_state["Lwear01"], wear03))
-                m2 = st.write(AAAA(st.session_state["Lwear01"], wear06))
+                m0 = (AAAA(st.session_state["Lwear01"], wear02))
+                m1 = (AAAA(st.session_state["Lwear01"], wear03))
+                m2 = (AAAA(st.session_state["Lwear01"], wear06))
                 
-                if m0 > m1:
-                    if m0 > m2:
-                        st.write(m0)
-                elif m1 > m0:
-                    if m1 > m2:
-                        st.write(m1)
-                elif m2 > m0:
-                    if m2 > m1:
-                        st.write(m2)
+                if m0 > m1 and m0 > m2:
+                    st.write(m0)
+                    st.write("アメカジ")
+                elif m1 > m0 and m1 > m2:
+                    st.write(m1)
+                    st.write("ストリート")
+                elif m2 > m0 and m2 > m1:
+                    st.write(m2)
+                    st.write("サーフ")
+                        
+                if m0 == m1 or m0 == m2:
+                    st.write(m0)
+                    st.write("アメカジ")
+                if m1 == m0 or m1 == m2:
+                    st.write(m1)
+                    st.write("ストリート")
+                if m2 == m0 or m2 == m1:
+                    st.write(m2)
+                    st.write("サーフ")
                 
             elif st.session_state["yhs"] =="渋め":
                 
-                m0 = st.write(AAAA(st.session_state["Lwear01"], wear02))
-                m1 = st.write(AAAA(st.session_state["Lwear01"], wear04))
-                m2 = st.write(AAAA(st.session_state["Lwear01"], wear05))
-                m3 = st.write(AAAA(st.session_state["Lwear01"], wear06))
-                m4 = st.write(AAAA(st.session_state["Lwear01"], wear07))
+                
+                m0 = (AAAA(st.session_state["Lwear01"], wear02))
+                m1 = (AAAA(st.session_state["Lwear01"], wear04))
+                m2 = (AAAA(st.session_state["Lwear01"], wear05))
+                m3 = (AAAA(st.session_state["Lwear01"], wear06))
+                m4 = (AAAA(st.session_state["Lwear01"], wear07))
                 
 
-                if m0 >= m1 and m0 >= m2 and m0 >= m3 and m0 >= m4:
-                    st.write("m0")
-
-                if m1 >= m0 and m1 >= m2 and m1 >= m3 and m1 >= m4:
-                    st.write("m1")
+                if m0 > m1 and m0 > m2 and m0 > m3 and m0 > m4:
+                    st.write(m0)
+                    st.write("アメカジ")
+                elif m1 > m0 and m1 > m2 and m1 > m3 and m1 > m4:
+                    st.write(m1)
+                    st.write("トラッド")
+                elif m2 > m0 and m2 > m1 and m2 > m3 and m0 > m4:
+                    st.write(m2)
+                    st.write("ワーク")
+                elif m3 > m0 and m3 > m1 and m3 > m2 and m3 > m4:
+                    st.write(m3)
+                    st.write("サーフ")
+                elif m4 > m0 and m4 > m1 and m4 > m2 and m4 > m3:
+                    st.write(m4)
+                    st.write("ロック")
                     
-                if m2 >= m0 and m2 >= m1 and m2 >= m3 and m0 >= m4:
-                    st.write("m2")
-                    
-                if m3 >= m0 and m3 >= m1 and m3 >= m2 and m3 >= m4:
-                    st.write("m3")
-                    
-                if m4 >= m0 and m4 >= m1 and m4 >= m2 and m4 >= m3:
-                    st.write("m4")
-                
+                if m0 == m1 or m0 == m2 or m0 == m3 or m0 == m4:
+                    st.write(m0)
+                    st.write("アメカジ")
+                if m1 == m0 or m1 == m2 or m1 == m3 or m1 == m4:
+                    st.write(m1)
+                    st.write("トラッド")
+                if m2 == m0 or m2 == m1 or m2 == m3 or m2 == m4:
+                    st.write(m2)
+                    st.write("ワーク")
+                if m3 == m0 or m3 == m1 or m3 == m2 or m3 == m4:
+                    st.write(m3)
+                    st.write("サーフ")
+                if m4 == m0 or m4 == m1 or m4 == m2 or m4 == m3:
+                    st.write(m4)
+                    st.write("ロック")
 
             
             elif st.session_state["yhs"] =="シンプル":
                         
-                m0 = st.write(AAAA(st.session_state["Lwear01"], wear01))
-                m1 = st.write(AAAA(st.session_state["Lwear01"], wear04))
+                m0 = (AAAA(st.session_state["Lwear01"], wear01))
+                m1 = (AAAA(st.session_state["Lwear01"], wear04))
                 
                 if m0 > m1:
                     st.write(m0)
+                    st.write("きれいめ")
                 elif m1 > m0:
                     st.write(m1)
+                    st.write("トラッド")
+                if m0 == m1:
+                    st.write(m0)
+                    st.write("きれいめ")
+                    st.write(m1)
+                    st.write("トラッド")
 
             if len(Users) == 0:
                 st.write("なし")
