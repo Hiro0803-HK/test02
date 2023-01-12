@@ -107,14 +107,7 @@ def page2():
 
         st.write(AAA)
 
-        match AAA:
-
-            case "瘦せ型":
-                st.write(AAA)
-            
-            case _:
-                st.write("none")
-            
+        
 
 
 
@@ -133,6 +126,10 @@ def page3():
 
     st.write("結果表示")
 
+    image = Image.open("アメカジ/アメカジ_Tシャツ_1.png")
+    st.image(image)
+
+    st.button(label = "戻る", on_click = change_page)
 
 
 
