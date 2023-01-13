@@ -9,6 +9,7 @@ import streamlit as st
 #import pandas as pd
 from PIL import Image
 #import time
+
 st.title('マイクロゼット')
 
 PAGE = st.sidebar.selectbox(
@@ -98,12 +99,16 @@ div.st-bh{
 </style>
 """, unsafe_allow_html=True)
 
+def warning(url):
+     st.markdown(f'<p style="background-color:#0066cc;color:#33ff33;font-size:24px;border-radius:2%;">{url}</p>', unsafe_allow_html=True)
+
+def wegets(Rtext):
+     st.markdown(f'<p style="background-color:purple;color:white;font-size:20px;border-radius:2%;">{Rtext}</p>', unsafe_allow_html=True)
+
+
 #nwear = [fuku for fuku, score in wear02.items() if score == 5]
 
 #st.write(nwear)
-
-def header(url):
-     st.markdown(f'<p style="background-color:#0066cc;color:#33ff33;font-size:24px;border-radius:2%;">{url}</p>', unsafe_allow_html=True)
 
 def AAAA(arr, dict):
 
@@ -205,7 +210,7 @@ def Genre_System():
 
 
             if len(Users) == 0:
-                st.warning("その情報に合った服の系統はありません")
+                warning("その情報に合った服の系統はありません")
               
                 
             else:
@@ -255,7 +260,7 @@ def Genre_System():
             st.empty()
         except UnboundLocalError:
             #st.write('<span style="color:yellow;background:green">何も選択されていません</span>', unsafe_allow_html=True)
-            header("何も選択されていません")
+            warning("何も選択されていません")
 
 
 def page1():
@@ -265,11 +270,11 @@ def page1():
        def change_page():
             
             st.session_state["page-select"] = "ページ2"
-    
-       st.slider("あなたの身長は？", 100, 200, 150, key="ytl")
+       wegets("あなたの身長は？")
+       st.slider("　", 100, 200, 150, key="ytl")
        st.write("\n")
 
-       st.write("あなたの体系は？")
+       wegets("あなたの体系は？")
        col1,col2,col3 = st.columns(3)     
        with col1:
            image = Image.open('ほっそり.png')
@@ -291,17 +296,17 @@ def page1():
        st.radio("　", YBCList, key="ybc",horizontal=True)
        st.write("\n")
  
-       
-       st.radio("あなたの目指す雰囲気は？", IMList, key="yhs", horizontal=True)
+       wegets("あなたの目指す雰囲気は？")
+       st.radio("　", IMList, key="yhs", horizontal=True)
        st.write("\n")
         
     
-
-       st.select_slider("あなたの着たいサイズ感は？", YSize, YSize[3], key="ysz")
+       wegets("あなたの着たいサイズ感は？")
+       st.select_slider("　", YSize, YSize[3], key="ysz")
        st.write("\n")
        
-       
-       st.selectbox("あなたの好きなマスクの色は？", YMsk, key="Ymk")
+       wegets("あなたの好きなマスクの色は？")
+       st.selectbox("　", YMsk, key="Ymk")
        st.write("\n")
             
       
@@ -331,8 +336,8 @@ def page2():
             st.empty()
             
      with colp2_02:
-
-            st.multiselect("あなたの好きな上の服は", wear01, key="Lwear01")
+            wegets("あなたの好きな上の服は")
+            st.multiselect("　", wear01, key="Lwear01")
 
             YLW = st.session_state["Lwear01"]
 
@@ -360,8 +365,8 @@ def page2():
             st.empty()
 
      with colp4_02:
-
-            st.multiselect("あなたの好きな下の服は", wear02, key="Lwear02")
+            wegets("あなたの好きな下の服は")
+            st.multiselect("　", wear02, key="Lwear02")
             
             YLP = st.session_state["Lwear02"]
      with colp4_03:
@@ -405,7 +410,7 @@ def page3():
             st.write("上の服：" + IMGNAME[0])
 
         except IndexError:
-            st.warning("別の選択肢を試してみてください")
+            warning("別の選択肢を試してみてください")
        
                            
     with pg3_col03:
@@ -446,7 +451,7 @@ def page3():
             st.write("下の服：" + IMGNAME[1])
 
         except IndexError:
-            st.warning("別の選択肢を試してみてください")
+            warning("別の選択肢を試してみてください")
        
                            
     with pg7_col03:
