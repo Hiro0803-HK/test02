@@ -102,6 +102,9 @@ div.st-bh{
 
 #st.write(nwear)
 
+def header(url):
+     st.markdown(f'<p style="background-color:#0066cc;color:#33ff33;font-size:24px;border-radius:2%;">{url}</p>', unsafe_allow_html=True)
+
 def AAAA(arr, dict):
 
     Keys = dict.keys()
@@ -251,8 +254,8 @@ def Genre_System():
         except IndexError:
             st.empty()
         except UnboundLocalError:
-            st.warning("何も選択されていません")
-        
+            #st.write('<span style="color:yellow;background:green">何も選択されていません</span>', unsafe_allow_html=True)
+            header("何も選択されていません")
 
 
 def page1():
