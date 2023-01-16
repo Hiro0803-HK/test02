@@ -10,14 +10,14 @@ import streamlit as st
 from PIL import Image
 #import time
 
-st.image(Image.open('mycloset1.png'))
+st.image(Image.open('micloset.png'))
 
 PAGE = st.sidebar.selectbox(
     "ページ選択", ["ページ1", "ページ2","ページ3"], 
     key="page-select"
     )
 
-YBCList = ["瘦せ型　　　　　　　　　　", "普通　　　　　　　　　　", "がっちり"] 
+YBCList = ["細身　　　　　　　　　　　", "普通　　　　　　　　　　", "筋肉質"] 
 
 cont = st.container()
 cont2 = st.container()
@@ -48,7 +48,7 @@ IMList = ["清楚", "クール", "明るめ", "大人","渋め", "シンプル"]
 
 YSize = ["とてもぴったり", "ぴったり", "少しぴったり", "普通", "少しゆったり", "ゆったり", "とてもゆったり"]
 
-YMsk = ["白", "黒", "グレー", "ベージュ", "茶色", "青", "紺", "ピンク", "緑"]
+YMsk = ["白", "黒", "グレー", "ベージュ", "青", "ピンク", "緑"]
 
 WJlist = ["きれい目", "アメカジ", "ストリート", "トラッド", "ワーク", "サーフ", "ロック", "アウトドア＆スポーツ"]
 
@@ -60,9 +60,9 @@ wear02 = ["ジーパン", "チノパン", "スウェットパンツ", "カーゴ
 CCCC = {"きれい目" : {"Tシャツ":5, "スウェット":3, "ジャケット":3, "パーカー":4, "セーター":5, "カーディガン":4, "コート":5, "ダウンジャケット":4, "シャツ":5, "ポロシャツ":4, "タートルネック":3},
         "アメカジ" : {"Tシャツ":5, "スウェット":4, "ジャケット":5, "パーカー":5, "カーディガン":2, "シャツ":5, "ポロシャツ":3},
         "トラッド" : {"Tシャツ":3, "ジャケット":5, "セーター":3, "カーディガン":2, "コート":5, "ポロシャツ":5, "タートルネック":1},
-        "ワーク" : {"Tシャツ":4, "ジャケット":5, "シャツ":4},
+        "ワーク" : {"ダウンジャケット":5, "ジャケット":5, "シャツ":4},
         "ロック" : {"Tシャツ":4, "ジャケット":5, "セーター":1, "シャツ":2, "ポロシャツ":3},
-        "アウトドア＆スポーツ" : {"Tシャツ":3, "ジャケット":4, "パーカー":5, "ダウンジャケット":5},
+        "アウトドア＆スポーツ" : {"Tシャツ":5, "ジャケット":4, "パーカー":5, "ダウンジャケット":5},
         "ストリート" : {"Tシャツ":5, "スウェット":5, "ジャケット":4, "パーカー":5, "ダウンジャケット":3, "ポロシャツ":3, "タートルネック":2}
         }
 
@@ -72,7 +72,7 @@ DDDD = {"きれい目" : {"ジーパン":4, "チノパン":5, "スウェット�
         "トラッド" : {"ジーパン":4, "チノパン":5, "スラックス":5, "イージーパンツ":3, "スキニー":1, "ジョガーパンツ":2},
         "ワーク" : {"ジーパン":5, "チノパン":5, "カーゴパンツ":3, "イージーパンツ":4, "スキニー":2, "ジョガーパンツ":1},
         "ロック" : {"ジーパン":4, "カーゴパンツ":2, "スキニー":5, "レザーパンツ":4},
-        "アウトドア＆スポーツ" : {"ジーパン":2, "チノパン":4, "スウェットパンツ":4, "カーゴパンツ":4, "イージーパンツ":2, "ショートパンツ":5, "ジョガーパンツ":5},
+        "アウトドア＆スポーツ" : {"ジーパン":2, "チノパン":3, "スウェットパンツ":4, "カーゴパンツ":4, "イージーパンツ":2, "ショートパンツ":5, "ジョガーパンツ":5},
         }
 
 
@@ -98,10 +98,10 @@ div.st-bh{
 """, unsafe_allow_html=True)
 
 def warning(url):
-     st.markdown(f'<p style="background-color:#ec7992;color:white;font-size:40px;border-radius:2%;">{url}</p>', unsafe_allow_html=True)
+     st.markdown(f'<p style="background-color:#ea5419;color:white;font-size:40px;border-radius:2%;">{url}</p>', unsafe_allow_html=True)
 
 def wegets(Rtext):
-     st.markdown(f'<p style="background-color:purple;color:white;font-size:20px;border-radius:2%;">{Rtext}</p>', unsafe_allow_html=True)
+     st.markdown(f'<p style="background-color:#F8B800;color:black;font-size:20px;border-radius:2%;">{Rtext}</p>', unsafe_allow_html=True)
 
 
 #nwear = [fuku for fuku, score in wear02.items() if score == 5]
@@ -135,7 +135,7 @@ def Genre_System():
                 WJlist.remove("きれい目")
                 WJlist.remove("ロック")
                
-                if UsersBC ==  "瘦せ型　　　　　　　　　　":
+                if UsersBC ==  "細身　　　　　　　　　　　":
 
                     WJlist.remove("アメカジ")
                     WJlist.remove("サーフ")
@@ -146,13 +146,13 @@ def Genre_System():
                 WJlist.remove("ロック")
                 
                 
-                if UsersBC ==  "瘦せ型　　　　　　　　　　":
+                if UsersBC ==  "細身　　　　　　　　　　　":
 
                     WJlist.remove("アメカジ")
                     WJlist.remove("サーフ")
                     WJlist.remove("ワーク")
 
-                elif UsersBC ==  "がっちり":
+                elif UsersBC ==  "筋肉質":
 
                     WJlist.remove("きれい目")
                     WJlist.remove("トラッド")
@@ -164,13 +164,13 @@ def Genre_System():
 
                 
                     
-                if UsersBC ==  "瘦せ型　　　　　　　　　　":
+                if UsersBC ==  "細身　　　　　　　　　　　":
 
                         WJlist.remove("アメカジ")
                         WJlist.remove("サーフ")
                         WJlist.remove("ワーク")
         
-                elif UsersBC == "がっちり":
+                elif UsersBC == "筋肉質":
 
                         WJlist.remove("きれい目")
                         WJlist.remove("トラッド")
@@ -195,7 +195,7 @@ def Genre_System():
 
             elif st.session_state["yhs"] =="明るめ":
 
-                Users = [i for i in WJlist if i == "サーフ" or i == "アメカジ" or i == "ストリート" or i == "アウトドア＆スポーツ"]
+                Users = [i for i in WJlist if i == "アメカジ" or i == "ストリート" or i == "アウトドア＆スポーツ"]
             
             elif st.session_state["yhs"] =="渋め":
                 
@@ -272,7 +272,7 @@ def page1():
        st.slider("　", 100, 200, 150, key="ytl")
        st.write("\n")
 
-       wegets("あなたの体系は？")
+       wegets("あなたの体型は？")
        col1,col2,col3 = st.columns(3)     
        with col1:
            image = Image.open('ほっそり.png')
@@ -405,7 +405,7 @@ def page3():
         try:
 
             Genre_System()
-            st.write(f'あなたには上の服なら<span style="color:yellow">{IMGNAME[0]}</span>が似合うはずです', unsafe_allow_html=True)
+            st.write(f'<span style="color:black;font-size:20px;">あなたにはトップスなら</span><span style="color:#5406d1;font-size:27px;">{IMGNAME[0]}</span><span style="color:black;font-size:20px;">が似合うはずです</span>', unsafe_allow_html=True)
 
             if IMGNAME[0] == "きれい目":
                 with st.expander(f'{IMGNAME[0]}の説明'):
@@ -513,7 +513,7 @@ def page3():
             
         try:
 
-            st.write(f'あなたには下の服なら<span style="color:yellow">{IMGNAME[1]}</span>が似合うはずです', unsafe_allow_html=True)
+            st.write(f'<span style="color:black;font-size:20px;">あなたにはボトムスなら</span><span style="color:#5406d1;font-size:27px;">{IMGNAME[1]}</span><span style="color:black;font-size:20px;">が似合うはずです</span>', unsafe_allow_html=True)
 
             if IMGNAME[1] == "きれい目":
                 with st.expander(f'{IMGNAME[1]}の説明'):
