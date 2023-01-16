@@ -10,7 +10,7 @@ import streamlit as st
 from PIL import Image
 #import time
 
-st.title('マイクロゼット')
+st.image(Image.open('mycloset1.png'))
 
 PAGE = st.sidebar.selectbox(
     "ページ選択", ["ページ1", "ページ2","ページ3"], 
@@ -61,7 +61,6 @@ CCCC = {"きれい目" : {"Tシャツ":5, "スウェット":3, "ジャケット"
         "アメカジ" : {"Tシャツ":5, "スウェット":4, "ジャケット":5, "パーカー":5, "カーディガン":2, "シャツ":5, "ポロシャツ":3},
         "トラッド" : {"Tシャツ":3, "ジャケット":5, "セーター":3, "カーディガン":2, "コート":5, "ポロシャツ":5, "タートルネック":1},
         "ワーク" : {"Tシャツ":4, "ジャケット":5, "シャツ":4},
-        "サーフ" : {"Tシャツ":5, "パーカー":5, "ポロシャツ":1},
         "ロック" : {"Tシャツ":4, "ジャケット":5, "セーター":1, "シャツ":2, "ポロシャツ":3},
         "アウトドア＆スポーツ" : {"Tシャツ":3, "ジャケット":4, "パーカー":5, "ダウンジャケット":5},
         "ストリート" : {"Tシャツ":5, "スウェット":5, "ジャケット":4, "パーカー":5, "ダウンジャケット":3, "ポロシャツ":3, "タートルネック":2}
@@ -72,9 +71,8 @@ DDDD = {"きれい目" : {"ジーパン":4, "チノパン":5, "スウェット�
         "ストリート" : {"トラックパンツ":5, "ジーパン":5, "チノパン":4, "スウェットパンツ":4, "カーゴパンツ":5, "イージーパンツ":1, "ショートパンツ":4, "ジョガーパンツ":2},
         "トラッド" : {"ジーパン":4, "チノパン":5, "スラックス":5, "イージーパンツ":3, "スキニー":1, "ジョガーパンツ":2},
         "ワーク" : {"ジーパン":5, "チノパン":5, "カーゴパンツ":3, "イージーパンツ":4, "スキニー":2, "ジョガーパンツ":1},
-        "サーフ" : {"ジーパン":3, "チノパン":2, "カーゴパンツ":4, "ショートパンツ":5, "ジョガーパンツ":3},
         "ロック" : {"ジーパン":4, "カーゴパンツ":2, "スキニー":5, "レザーパンツ":4},
-        "アウトドア＆スポーツ" : {"ジーパン":2, "チノパン":4, "スウェットパンツ":4, "カーゴパンツ":4, "イージーパンツ":2, "ショートパンツ":2, "ジョガーパンツ":5},
+        "アウトドア＆スポーツ" : {"ジーパン":2, "チノパン":4, "スウェットパンツ":4, "カーゴパンツ":4, "イージーパンツ":2, "ショートパンツ":5, "ジョガーパンツ":5},
         }
 
 
@@ -100,7 +98,7 @@ div.st-bh{
 """, unsafe_allow_html=True)
 
 def warning(url):
-     st.markdown(f'<p style="background-color:#0066cc;color:#33ff33;font-size:24px;border-radius:2%;">{url}</p>', unsafe_allow_html=True)
+     st.markdown(f'<p style="background-color:#ec7992;color:white;font-size:40px;border-radius:2%;">{url}</p>', unsafe_allow_html=True)
 
 def wegets(Rtext):
      st.markdown(f'<p style="background-color:purple;color:white;font-size:20px;border-radius:2%;">{Rtext}</p>', unsafe_allow_html=True)
@@ -245,7 +243,7 @@ def Genre_System():
                 IMGNAME.append(Rname02)
 
                 """
-                #### あなたに似合う服の系統は
+                #### あなたに似合う服のジャンルは
 
                 """
 
@@ -407,7 +405,74 @@ def page3():
         try:
 
             Genre_System()
-            st.write("上の服：" + IMGNAME[0])
+            st.write(f'あなたには上の服なら<span style="color:yellow">{IMGNAME[0]}</span>が似合うはずです', unsafe_allow_html=True)
+
+            if IMGNAME[0] == "きれい目":
+                with st.expander(f'{IMGNAME[0]}の説明'):
+                    """
+                    ###### 過度なデザインのものではなく、
+                    ###### すっきりとした配色やアイテムを
+                    ###### 揃えたものです
+                    """
+            elif IMGNAME[0] == "トラッド":
+                with st.expander(f'{IMGNAME[0]}の説明'):
+                    """
+                    ###### トラッドとは、
+                    ###### 「伝統的な」「保守的な」を意味する「トラディショナル」の和製英語で
+                    ###### 源流は英国紳士服です
+                    ###### 定番はスリーピース（ジャケット、ベスト、パンツの組み合わせ）です。
+
+                    """
+            elif IMGNAME[0] == "アメカジ":
+                with st.expander(f'{IMGNAME[0]}の説明'):
+                    """
+                    ###### アメカジとは、
+                    ###### 「アメリカンカジュアル」の略称で
+                    ###### アメリカ風の服でラフ過ぎないキッチリとした着こなしのことです
+
+                    """
+            elif IMGNAME[0] == "ストリート":
+                with st.expander(f'{IMGNAME[0]}の説明'):
+                    """
+                    ###### ストリートとは、
+                    ###### 若者の間で自然発生した自由な着こなしのことです
+                    ###### オーバーサイズのスウェット、パーカー、ジーンズ等を
+                    ###### 合わせたラフなスタイルが代表的です。
+
+                    """
+            elif IMGNAME[0] == "サーフ":
+                with st.expander(f'{IMGNAME[0]}の説明'):
+                    """
+                    ###### サーファーをイメージした
+                    ###### ラフでカジュアルなスタイルのことです。
+                    ###### 
+
+                    """
+            elif IMGNAME[0] == "ワーク":
+                with st.expander(f'{IMGNAME[0]}の説明'):
+                    """
+                    ###### aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    ###### cccccccccccccccccccccccccccccccc
+                    ###### ssssssssssssssssssssssssssssssss
+
+                    """
+            elif IMGNAME[0] == "アウトドア＆スポーツ":
+                with st.expander(f'{IMGNAME[0]}の説明'):
+                    """
+                    ###### アウトドア＆スポーツとは、
+                    ###### 動きやすさ、機能性を軸にして
+                    ###### 日常に落とし込んだアイテムの組み合わせの
+                    ###### スタイルのことです。
+
+                    """
+            elif IMGNAME[0] == "ロック":
+                with st.expander(f'{IMGNAME[0]}の説明'):
+                    """
+                    ###### aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    ###### cccccccccccccccccccccccccccccccc
+                    ###### ssssssssssssssssssssssssssssssss
+
+                    """
 
         except IndexError:
             warning("別の選択肢を試してみてください")
@@ -448,8 +513,76 @@ def page3():
             
         try:
 
-            st.write("下の服：" + IMGNAME[1])
+            st.write(f'あなたには下の服なら<span style="color:yellow">{IMGNAME[1]}</span>が似合うはずです', unsafe_allow_html=True)
 
+            if IMGNAME[1] == "きれい目":
+                with st.expander(f'{IMGNAME[1]}の説明'):
+                    """
+                    ###### 過度なデザインのものではなく、
+                    ###### すっきりとした配色やアイテムを
+                    ###### 揃えたものです
+                    """
+            elif IMGNAME[1] == "トラッド":
+                with st.expander(f'{IMGNAME[1]}の説明'):
+                    """
+                    ###### トラッドとは、
+                    ###### 「伝統的な」「保守的な」を意味する「トラディショナル」の和製英語で
+                    ###### 源流は英国紳士服です
+                    ###### 定番はスリーピース（ジャケット、ベスト、パンツの組み合わせ）です。
+
+                    """
+            elif IMGNAME[1] == "アメカジ":
+                with st.expander(f'{IMGNAME[1]}の説明'):
+                    """
+                    ###### アメカジとは、
+                    ###### 「アメリカンカジュアル」の略称で
+                    ###### アメリカ風の服でラフ過ぎないキッチリとした着こなしのことです
+
+                    """
+            elif IMGNAME[1] == "ストリート":
+                with st.expander(f'{IMGNAME[1]}の説明'):
+                    """
+                    ###### ストリートとは、
+                    ###### 若者の間で自然発生した自由な着こなしのことです
+                    ###### オーバーサイズのスウェット、パーカー、ジーンズ等を
+                    ###### 合わせたラフなスタイルが代表的です。
+
+                    """
+            elif IMGNAME[1] == "サーフ":
+                with st.expander(f'{IMGNAME[1]}の説明'):
+                    """
+                    ###### サーファーをイメージした
+                    ###### ラフでカジュアルなスタイルのことです。
+                    ###### 
+
+                    """
+            elif IMGNAME[1] == "ワーク":
+                with st.expander(f'{IMGNAME[1]}の説明'):
+                    """
+                    ###### aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    ###### cccccccccccccccccccccccccccccccc
+                    ###### ssssssssssssssssssssssssssssssss
+
+                    """
+            elif IMGNAME[1] == "アウトドア＆スポーツ":
+                with st.expander(f'{IMGNAME[1]}の説明'):
+                    """
+                    ###### アウトドア＆スポーツとは、
+                    ###### 動きやすさ、機能性を軸にして
+                    ###### 日常に落とし込んだアイテムの組み合わせの
+                    ###### スタイルのことです。
+
+                    """
+            elif IMGNAME[1] == "ロック":
+                with st.expander(f'{IMGNAME[1]}の説明'):
+                    """
+                    ###### aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    ###### cccccccccccccccccccccccccccccccc
+                    ###### ssssssssssssssssssssssssssssssss
+
+                    """
+            
+            
         except IndexError:
             warning("別の選択肢を試してみてください")
        
