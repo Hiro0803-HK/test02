@@ -90,12 +90,13 @@ st.markdown(
 div[data-baseweb = "popover"] ul {
     background-color:#7086ba;
 }
-div.st-bh{
-    background-color:#239ba6;
-}
 
 </style>
 """, unsafe_allow_html=True)
+
+# div.st-bh{
+#     background-color:white;
+# }
 
 def warning(url):
      st.markdown(f'<p style="background-color:#ea5419;color:white;font-size:40px;border-radius:2%;">{url}</p>', unsafe_allow_html=True)
@@ -204,7 +205,7 @@ def Genre_System():
             
             elif st.session_state["yhs"] =="シンプル":
                         
-                Users = [i for i in WJlist if i == "きれい目" or i == "トラッド"]
+                Users = [i for i in WJlist if i == "きれい目" or i == "トラッド" or i == "アメカジ"]
 
 
             if len(Users) == 0:
