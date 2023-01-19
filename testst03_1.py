@@ -9,14 +9,15 @@ import streamlit as st
 #import pandas as pd
 from PIL import Image
 #import time
-st.title('マイクロゼット')
+
+st.image(Image.open('micloset.png'))
 
 PAGE = st.sidebar.selectbox(
     "ページ選択", ["ページ1", "ページ2","ページ3"], 
     key="page-select"
     )
 
-YBCList = ["瘦せ型　　　　　　　　　　", "普通　　　　　　　　　　", "がっちり"] 
+YBCList = ["細身　　　　　　　　　　　", "普通　　　　　　　　　　", "筋肉質"] 
 
 cont = st.container()
 cont2 = st.container()
@@ -47,33 +48,31 @@ IMList = ["清楚", "クール", "明るめ", "大人","渋め", "シンプル"]
 
 YSize = ["とてもぴったり", "ぴったり", "少しぴったり", "普通", "少しゆったり", "ゆったり", "とてもゆったり"]
 
-YMsk = ["白", "黒", "グレー", "ベージュ", "茶色", "青", "紺", "ピンク", "緑"]
+YMsk = ["白", "黒", "グレー", "ベージュ", "青", "ピンク", "緑"]
 
-WJlist = ["きれい目", "アメカジ", "ストリート", "トラッド", "ワーク", "サーフ", "ロック", "アウトドア＆スポーツ"]
+WJlist = ["きれい目", "アメカジ", "ストリート", "トラッド", "ワーク", "ロック", "アウトドア＆スポーツ"]
 
-wear01 = ["Tシャツ", "スウェット", "ジャケット", "パーカー", "セーター", "カーディガン", "コート", "ダウンジャケット", "シャツ", "ポロシャツ", "タートルネック"]
+wear01 = ["Tシャツ", "スウェット", "ジャケット", "パーカー", "セーター", "カーディガン", "コート", "ダウンジャケット", "シャツ", "ポロシャツ", "タートルネック", "ベスト"]
 
-wear02 = ["ジーパン", "チノパン", "スウェットパンツ", "カーゴパンツ", "スラックス", "イージーパンツ", "スキニー", "フレアパンツ", "ショートパンツ", "ジョガーパンツ", "コーディルー", "レザーパンツ", "トラックパンツ"]
+wear02 = ["ジーパン", "チノパン", "スウェットパンツ", "カーゴパンツ", "スラックス", "イージーパンツ", "スキニー", "フレアパンツ", "ショートパンツ", "ジョガーパンツ", "レザーパンツ", "トラックパンツ", "コーデュロイパンツ"]
 
 #きれいめ　#パーカー、ポロシャツ
 CCCC = {"きれい目" : {"Tシャツ":5, "スウェット":3, "ジャケット":3, "パーカー":4, "セーター":5, "カーディガン":4, "コート":5, "ダウンジャケット":4, "シャツ":5, "ポロシャツ":4, "タートルネック":3},
         "アメカジ" : {"Tシャツ":5, "スウェット":4, "ジャケット":5, "パーカー":5, "カーディガン":2, "シャツ":5, "ポロシャツ":3},
-        "トラッド" : {"Tシャツ":3, "ジャケット":5, "セーター":3, "カーディガン":2, "コート":5, "ポロシャツ":5, "タートルネック":1},
-        "ワーク" : {"Tシャツ":4, "ジャケット":5, "シャツ":4},
-        "サーフ" : {"Tシャツ":5, "パーカー":5, "ポロシャツ":1},
-        "ロック" : {"Tシャツ":4, "ジャケット":5, "セーター":1, "シャツ":2, "ポロシャツ":3},
-        "アウトドア＆スポーツ" : {"Tシャツ":3, "ジャケット":4, "パーカー":5, "ダウンジャケット":5},
+        "トラッド" : {"Tシャツ":3, "ジャケット":5, "セーター":4, "カーディガン":2, "コート":5, "ポロシャツ":5, "タートルネック":1, "ベスト":5},
+        "ワーク" : {"ダウンジャケット":5, "ジャケット":5, "シャツ":4, "タートルネック":5},
+        "ロック" : {"Tシャツ":10, "ジャケット":5, "セーター":1, "シャツ":2, "ポロシャツ":3},
+        "アウトドア＆スポーツ" : {"Tシャツ":5, "ジャケット":4, "パーカー":5, "ダウンジャケット":5},
         "ストリート" : {"Tシャツ":5, "スウェット":5, "ジャケット":4, "パーカー":5, "ダウンジャケット":3, "ポロシャツ":3, "タートルネック":2}
         }
 
-DDDD = {"きれい目" : {"ジーパン":4, "チノパン":5, "スウェットパンツ":3, "スラックス":5, "イージーパンツ":4, "スキニー":2, "フレアパンツ":3, "ショートパンツ":1, "ジョガーパンツ":1, "コーディルー":4, "レザーパンツ":3},
+DDDD = {"きれい目" : {"ジーパン":4, "チノパン":5, "スウェットパンツ":3, "スラックス":5, "イージーパンツ":4, "スキニー":2, "フレアパンツ":3, "コーデュロイパンツ":4},
         "アメカジ" : {"ジーパン":5, "チノパン":4, "スウェットパンツ":1, "カーゴパンツ":3, "スキニー":2},
-        "ストリート" : {"トラックパンツ":5, "ジーパン":5, "チノパン":4, "スウェットパンツ":4, "カーゴパンツ":5, "イージーパンツ":1, "ショートパンツ":4, "ジョガーパンツ":2},
-        "トラッド" : {"ジーパン":4, "チノパン":5, "スラックス":5, "イージーパンツ":3, "スキニー":1, "ジョガーパンツ":2},
+        "ストリート" : {"トラックパンツ":4, "ジーパン":5, "チノパン":3, "スウェットパンツ":4, "カーゴパンツ":5, "イージーパンツ":1, "ショートパンツ":4, "ジョガーパンツ":2},
+        "トラッド" : {"ジーパン":4, "チノパン":5, "スラックス":5, "イージーパンツ":5, "スキニー":1, "ジョガーパンツ":2},
         "ワーク" : {"ジーパン":5, "チノパン":5, "カーゴパンツ":3, "イージーパンツ":4, "スキニー":2, "ジョガーパンツ":1},
-        "サーフ" : {"ジーパン":3, "チノパン":2, "カーゴパンツ":4, "ショートパンツ":5, "ジョガーパンツ":3},
-        "ロック" : {"ジーパン":4, "カーゴパンツ":2, "スキニー":5, "レザーパンツ":4},
-        "アウトドア＆スポーツ" : {"ジーパン":2, "チノパン":4, "スウェットパンツ":4, "カーゴパンツ":4, "イージーパンツ":2, "ショートパンツ":2, "ジョガーパンツ":5},
+        "ロック" : {"ジーパン":4, "カーゴパンツ":2, "スキニー":5, "レザーパンツ":5},
+        "アウトドア＆スポーツ" : {"ジーパン":2, "チノパン":3, "スウェットパンツ":4, "カーゴパンツ":4, "イージーパンツ":2, "ショートパンツ":8, "ジョガーパンツ":5, "トラックパンツ":5},
         }
 
 
@@ -91,12 +90,20 @@ st.markdown(
 div[data-baseweb = "popover"] ul {
     background-color:#7086ba;
 }
-div.st-bh{
-    background-color:#239ba6;
-}
 
 </style>
 """, unsafe_allow_html=True)
+
+# div.st-bh{
+#     background-color:white;
+# }
+
+def warning(url):
+     st.markdown(f'<p style="background-color:#ea5419;color:white;font-size:40px;border-radius:2%;">{url}</p>', unsafe_allow_html=True)
+
+def wegets(Rtext):
+     st.markdown(f'<p style="background-color:#F8B800;color:black;font-size:20px;border-radius:2%;">{Rtext}</p>', unsafe_allow_html=True)
+
 
 #nwear = [fuku for fuku, score in wear02.items() if score == 5]
 
@@ -129,10 +136,9 @@ def Genre_System():
                 WJlist.remove("きれい目")
                 WJlist.remove("ロック")
                
-                if UsersBC ==  "瘦せ型　　　　　　　　　　":
+                if UsersBC ==  "細身　　　　　　　　　　　":
 
                     WJlist.remove("アメカジ")
-                    WJlist.remove("サーフ")
                     WJlist.remove("ワーク")          
        
             elif st.session_state["ytl"] > 165 and st.session_state["ytl"] < 175:
@@ -140,13 +146,12 @@ def Genre_System():
                 WJlist.remove("ロック")
                 
                 
-                if UsersBC ==  "瘦せ型　　　　　　　　　　":
+                if UsersBC ==  "細身　　　　　　　　　　　":
 
                     WJlist.remove("アメカジ")
-                    WJlist.remove("サーフ")
                     WJlist.remove("ワーク")
 
-                elif UsersBC ==  "がっちり":
+                elif UsersBC ==  "筋肉質":
 
                     WJlist.remove("きれい目")
                     WJlist.remove("トラッド")
@@ -158,13 +163,12 @@ def Genre_System():
 
                 
                     
-                if UsersBC ==  "瘦せ型　　　　　　　　　　":
+                if UsersBC ==  "細身　　　　　　　　　　　":
 
                         WJlist.remove("アメカジ")
-                        WJlist.remove("サーフ")
                         WJlist.remove("ワーク")
         
-                elif UsersBC == "がっちり":
+                elif UsersBC == "筋肉質":
 
                         WJlist.remove("きれい目")
                         WJlist.remove("トラッド")
@@ -189,22 +193,22 @@ def Genre_System():
 
             elif st.session_state["yhs"] =="明るめ":
 
-                Users = [i for i in WJlist if i == "サーフ" or i == "アメカジ" or i == "ストリート" or i == "アウトドア＆スポーツ"]
+                Users = [i for i in WJlist if i == "アメカジ"  or i == "アウトドア＆スポーツ"]
             
             elif st.session_state["yhs"] =="渋め":
                 
-                Users = [i for i in WJlist if i != "きれい目" or i != "ストリート"]
+                Users = [i for i in WJlist if i != "きれい目" and i != "ストリート"]
                 
             
             elif st.session_state["yhs"] =="シンプル":
                         
-                Users = [i for i in WJlist if i == "きれい目" or i == "トラッド"]
+                Users = [i for i in WJlist if i == "きれい目" or i == "トラッド" or i == "アメカジ"]
 
 
             if len(Users) == 0:
-                st.warning("その情報に合った服の系統はありません")
+                warning("その情報に合った服の系統はありません")
               
-                
+            
             else:
                 Result = 0
                 Result02 = 0
@@ -221,13 +225,13 @@ def Genre_System():
                             Result02 = AAAA(UsersData02, DDDD[Name])
                             Rname02 = Name
 
-                RWEARS01 = [fuku for fuku, score in CCCC[Rname].items() if score == 5 or score == 4]
+                RWEARS01 = [fuku for fuku, score in CCCC[Rname].items() if score >= 4]
                 
                 for x in RWEARS01:
                     
                     IMGLIST01.append(f'{Rname}_{x}')
             
-                RWEARS02 = [fuku for fuku, score in DDDD[Rname02].items() if score == 5 or score == 4]
+                RWEARS02 = [fuku for fuku, score in DDDD[Rname02].items() if score >= 4]
                
                 for x in RWEARS02:
                     
@@ -237,7 +241,7 @@ def Genre_System():
                 IMGNAME.append(Rname02)
 
                 """
-                #### あなたに似合う服の系統は
+                #### あなたに似合う服のジャンルは
 
                 """
 
@@ -251,8 +255,8 @@ def Genre_System():
         except IndexError:
             st.empty()
         except UnboundLocalError:
-            st.warning("何も選択されていません")
-        
+            #st.write('<span style="color:yellow;background:green">何も選択されていません</span>', unsafe_allow_html=True)
+            warning("何も選択されていません")
 
 
 def page1():
@@ -262,11 +266,11 @@ def page1():
        def change_page():
             
             st.session_state["page-select"] = "ページ2"
-    
-       st.slider("あなたの身長は？", 100, 200, 150, key="ytl")
+       wegets("あなたの身長は？")
+       st.slider("　", 100, 200, 150, key="ytl")
        st.write("\n")
 
-       st.write("あなたの体系は？")
+       wegets("あなたの体型は？")
        col1,col2,col3 = st.columns(3)     
        with col1:
            image = Image.open('ほっそり.png')
@@ -288,17 +292,17 @@ def page1():
        st.radio("　", YBCList, key="ybc",horizontal=True)
        st.write("\n")
  
-       
-       st.radio("あなたの目指す雰囲気は？", IMList, key="yhs", horizontal=True)
+       wegets("あなたの目指す雰囲気は？")
+       st.radio("　", IMList, key="yhs", horizontal=True)
        st.write("\n")
         
     
-
-       st.select_slider("あなたの着たいサイズ感は？", YSize, YSize[3], key="ysz")
+       wegets("あなたの着たいサイズ感は？")
+       st.select_slider("　", YSize, YSize[3], key="ysz")
        st.write("\n")
        
-       
-       st.selectbox("あなたの好きなマスクの色は？", YMsk, key="Ymk")
+       wegets("あなたの好きなマスクの色は？")
+       st.selectbox("　", YMsk, key="Ymk")
        st.write("\n")
             
       
@@ -328,8 +332,8 @@ def page2():
             st.empty()
             
      with colp2_02:
-
-            st.multiselect("あなたの好きな上の服は", wear01, key="Lwear01")
+            wegets("あなたの好きなトップスは")
+            st.multiselect("　", wear01, key="Lwear01")
 
             YLW = st.session_state["Lwear01"]
 
@@ -357,8 +361,8 @@ def page2():
             st.empty()
 
      with colp4_02:
-
-            st.multiselect("あなたの好きな下の服は", wear02, key="Lwear02")
+            wegets("あなたの好きなボトムスは")
+            st.multiselect("　", wear02, key="Lwear02")
             
             YLP = st.session_state["Lwear02"]
      with colp4_03:
@@ -399,11 +403,82 @@ def page3():
         try:
 
             Genre_System()
-            st.write("上の服：" + IMGNAME[0])
+            st.write(f'<span style="color:black;font-size:20px;">あなたにはトップスなら</span><span style="color:#5406d1;font-size:27px;">{IMGNAME[0]}</span><span style="color:black;font-size:20px;">が似合うはずです</span>', unsafe_allow_html=True)
+
+            if IMGNAME[0] == "きれい目":
+                with st.expander(f'{IMGNAME[0]}の説明'):
+                    """
+                    ###### 過度なデザインのものではなく、
+                    ###### すっきりとした配色やアイテムを
+                    ###### 揃えたものです
+                    """
+            elif IMGNAME[0] == "トラッド":
+                with st.expander(f'{IMGNAME[0]}の説明'):
+                    """
+                    ###### トラッドとは、
+                    ###### 「伝統的な」「保守的な」を意味する「トラディショナル」の和製英語で
+                    ###### 源流は英国紳士服です
+                    ###### 定番はスリーピース（ジャケット、ベスト、パンツの組み合わせ）です。
+
+                    """
+            elif IMGNAME[0] == "アメカジ":
+                with st.expander(f'{IMGNAME[0]}の説明'):
+                    """
+                    ###### アメカジとは、
+                    ###### 「アメリカンカジュアル」の略称で
+                    ###### アメリカ風の服でラフ過ぎないキッチリとした着こなしのことです
+
+                    """
+            elif IMGNAME[0] == "ストリート":
+                with st.expander(f'{IMGNAME[0]}の説明'):
+                    """
+                    ###### ストリートとは、
+                    ###### 若者の間で自然発生した自由な着こなしのことです
+                    ###### オーバーサイズのスウェット、パーカー、ジーンズ等を
+                    ###### 合わせたラフなスタイルが代表的です。
+
+                    """
+            elif IMGNAME[0] == "サーフ":
+                with st.expander(f'{IMGNAME[0]}の説明'):
+                    """
+                    ###### サーファーをイメージした
+                    ###### ラフでカジュアルなスタイルのことです。
+                    ###### 
+
+                    """
+            elif IMGNAME[0] == "ワーク":
+                with st.expander(f'{IMGNAME[0]}の説明'):
+                    """
+                    ###### ワークとは、
+                    ###### 労働者の作業着を着こなすスタイルであり、無骨で実用的、
+                    ###### シンプルで男らしいファッションです。
+                    ###### ワーク系のアイテムばかりでコーディネートしたときにワイルドすぎると感じる場合は、
+                    ###### きれいめのアイテムを取り入れるのがおすすめです。
+
+  
+                    """
+            elif IMGNAME[0] == "アウトドア＆スポーツ":
+                with st.expander(f'{IMGNAME[0]}の説明'):
+                    """
+                    ###### アウトドア＆スポーツとは、
+                    ###### 動きやすさ、機能性を軸にして
+                    ###### 日常に落とし込んだアイテムの組み合わせの
+                    ###### スタイルのことです。
+
+                    """
+            elif IMGNAME[0] == "ロック":
+                with st.expander(f'{IMGNAME[0]}の説明'):
+                    """
+                    ###### ロック系とは、
+                    ###### 元々はロックミュージシャンが着ていたスタイルで、
+                    ###### 時代によって定義が変わっていくファッションです。
+                    ###### 現在では黒を基調とし、革素材を使用するのがメジャーなスタイルです。
+
+                    """
 
         except IndexError:
-            st.warning("別の選択肢を試してみてください")
-       
+            warning("別の選択肢を試してみてください")
+                 
                            
     with pg3_col03:
            st.empty()
@@ -440,10 +515,81 @@ def page3():
             
         try:
 
-            st.write("下の服：" + IMGNAME[1])
+            st.write(f'<span style="color:black;font-size:20px;">あなたにはボトムスなら</span><span style="color:#5406d1;font-size:27px;">{IMGNAME[1]}</span><span style="color:black;font-size:20px;">が似合うはずです</span>', unsafe_allow_html=True)
 
+            if IMGNAME[1] == "きれい目":
+                with st.expander(f'{IMGNAME[1]}の説明'):
+                    """
+                    ###### 過度なデザインのものではなく、
+                    ###### すっきりとした配色やアイテムを
+                    ###### 揃えたものです
+                    """
+            elif IMGNAME[1] == "トラッド":
+                with st.expander(f'{IMGNAME[1]}の説明'):
+                    """
+                    ###### トラッドとは、
+                    ###### 「伝統的な」「保守的な」を意味する「トラディショナル」の和製英語で
+                    ###### 源流は英国紳士服です
+                    ###### 定番はスリーピース（ジャケット、ベスト、パンツの組み合わせ）です。
+
+                    """
+            elif IMGNAME[1] == "アメカジ":
+                with st.expander(f'{IMGNAME[1]}の説明'):
+                    """
+                    ###### アメカジとは、
+                    ###### 「アメリカンカジュアル」の略称で
+                    ###### アメリカ風の服でラフ過ぎないキッチリとした着こなしのことです
+
+                    """
+            elif IMGNAME[1] == "ストリート":
+                with st.expander(f'{IMGNAME[1]}の説明'):
+                    """
+                    ###### ストリートとは、
+                    ###### 若者の間で自然発生した自由な着こなしのことです
+                    ###### オーバーサイズのスウェット、パーカー、ジーンズ等を
+                    ###### 合わせたラフなスタイルが代表的です。
+
+                    """
+            elif IMGNAME[1] == "サーフ":
+                with st.expander(f'{IMGNAME[1]}の説明'):
+                    """
+                    ###### サーファーをイメージした
+                    ###### ラフでカジュアルなスタイルのことです。
+                    ###### 
+
+                    """
+            elif IMGNAME[1] == "ワーク":
+                with st.expander(f'{IMGNAME[1]}の説明'):
+                    """
+                    ###### ワークとは、
+                    ###### 労働者の作業着を着こなすスタイルであり、無骨で実用的、
+                    ###### シンプルで男らしいファッションです。
+                    ###### ワーク系のアイテムばかりでコーディネートしたときにワイルドすぎると感じる場合は、
+                    ###### きれいめのアイテムを取り入れるのがおすすめです。
+
+                    """
+            elif IMGNAME[1] == "アウトドア＆スポーツ":
+                with st.expander(f'{IMGNAME[1]}の説明'):
+                    """
+                    ###### アウトドア＆スポーツとは、
+                    ###### 動きやすさ、機能性を軸にして
+                    ###### 日常に落とし込んだアイテムの組み合わせの
+                    ###### スタイルのことです。
+
+                    """
+            elif IMGNAME[1] == "ロック":
+                with st.expander(f'{IMGNAME[1]}の説明'):
+                    """
+                     ###### ロック系とは、
+                     ###### 元々はロックミュージシャンが着ていたスタイルで、
+                     ###### 時代によって定義が変わっていくファッションです。
+                     ###### 現在では黒を基調とし、革素材を使用するのがメジャーなスタイルです。
+
+                    """
+            
+            
         except IndexError:
-            st.warning("別の選択肢を試してみてください")
+            warning("別の選択肢を試してみてください")
        
                            
     with pg7_col03:
@@ -472,8 +618,28 @@ def page3():
     except IndexError:
             st.empty()
     
-     
-         
+    with st.sidebar:
+        mask = st.session_state["Ymk"]
+
+        st.image(Image.open(f'マスク/{mask}.png'), width=250)
+        #if mask == "白":
+        #    imagem = Image.open('白.png')
+        #    st.image(imagem,width=250)
+        #elif mask == "黒":
+        #    imagem = Image.open('黒.png')
+        #    st.image(imagem,width=250)
+        #elif mask == "グレー":
+        #    imagem = Image.open('グレー.png')
+        #    st.image(imagem,width=250)
+        #elif mask == "ベージュ":
+        #    imagem = Image.open('ベージュ.png')
+        #    st.image(imagem,width=250)
+        #elif mask == "ピンク":
+        #    imagem = Image.open('ピンク.png')
+        #    st.image(imagem,width=250)   
+        #elif mask == "緑":
+        #    imagem = Image.open('緑.png')
+        #    st.image(imagem,width=250)
          
          
     st.button(label = "戻る", on_click = change_page)
@@ -488,4 +654,3 @@ elif PAGE == "ページ2":
 elif PAGE == "ページ3":
     page3()
 
- 
