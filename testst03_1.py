@@ -274,7 +274,7 @@ def page1():
        col1,col2,col3 = st.columns(3)     
        with col1:
            image = Image.open('ほっそり.png')
-           st.image(image,width=74)
+           st.image(image,width=75)
            
        with col2:
            image = Image.open('標準.png')
