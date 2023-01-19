@@ -48,7 +48,7 @@ IMList = ["清楚", "クール", "明るめ", "大人","渋め", "シンプル"]
 
 YSize = ["とてもぴったり", "ぴったり", "少しぴったり", "普通", "少しゆったり", "ゆったり", "とてもゆったり"]
 
-YMsk = ["白", "黒", "グレー", "ベージュ", "青", "ピンク", "緑"]
+YMsk = ["白", "黒", "グレー", "ベージュ", "ピンク", "緑"]
 
 WJlist = ["きれい目", "アメカジ", "ストリート", "トラッド", "ワーク", "ロック", "アウトドア＆スポーツ"]
 
@@ -87,6 +87,7 @@ IMGNAME = []
 st.markdown(
 """
 <style>
+
 div[data-baseweb = "popover"] ul {
     background-color:#7086ba;
 }
@@ -97,6 +98,14 @@ div[data-baseweb = "popover"] ul {
 # div.st-bh{
 #     background-color:white;
 # }
+#[data-testid="stSidebar"][aria-expanded="true"] > div:first-child {
+#        width: 500px;
+#    }
+# [data-testid="stSidebar"][aria-expanded="false"] > div:first-child {
+#        width: 500px;
+#        margin-left: -500px;
+#    }
+
 
 def warning(url):
      st.markdown(f'<p style="background-color:#ea5419;color:white;font-size:40px;border-radius:2%;">{url}</p>', unsafe_allow_html=True)
@@ -621,7 +630,7 @@ def page3():
     with st.sidebar:
         mask = st.session_state["Ymk"]
 
-        st.image(Image.open(f'マスク/{mask}.png'), width=250)
+        st.image(Image.open(f'マスク/{mask}.png'), caption=f'あなたが選んだマスクの色：{mask}' , width=200)
         #if mask == "白":
         #    imagem = Image.open('白.png')
         #    st.image(imagem,width=250)
